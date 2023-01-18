@@ -16,14 +16,17 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainScene.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("mainScene.fxml")));
         Scene mainScene = new Scene(root);
         stage.setTitle("Moteeve");
         stage.setResizable(false);
-
         stage.setScene(mainScene);
-        stage.show();
 
+        Connectivity.setConnection();
+        SceneController.setUp();
+
+        stage.show();
+        Connectivity.disconnect(Connectivity.getConn());
     }
 
 }

@@ -1,7 +1,7 @@
 package logic;
 
 import java.io.FileInputStream;
-
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -10,29 +10,27 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class Connectivity {
-    private static String USER = null;
-    private static String PASS = null;
-    private static String DBURL = null;
+public class Connectivity {																	//classe che gestisce la connettività dell'applicazione al database
+    //parametri di connessione
+    private static String user = null;
+    private static String pass = null;
 
+    private static String dburl = null;
     private static Connection conn;
 
-    public static void setConnection() {
-        try {
-            InputStream input = new FileInputStream("C:/Users/fonte/IdeaProjects/Moteeve/src/main/resources/properties.properties");
+
+    public static void setConnection() throws IOException, SQLException {
+
+            InputStream input = new FileInputStream("C://Users//bruno//IdeaProjects//Test2//src//main//resources//properties.properties");
             Properties prop = new Properties();
             prop.load(input);
 
-            USER = prop.getProperty("db.user");
-            PASS = prop.getProperty("db.password");
-            DBURL = prop.getProperty("db.url");
+            user = prop.getProperty("db.user");
+            pass = prop.getProperty("db.password");
+            dburl = prop.getProperty("db.url");
 
-            conn = DriverManager.getConnection(DBURL, USER, PASS);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            conn = DriverManager.getConnection(dburl,user, pass);
+
     }
 
     private Connectivity() {
@@ -43,7 +41,7 @@ public class Connectivity {
         return conn;
     }
 
-    public static void close(PreparedStatement stmt) {
+    public static void close(PreparedStatement stmt) {										//metodo che chiude lo statement
         try {
             if (stmt != null)
                 stmt.close();
@@ -52,7 +50,9 @@ public class Connectivity {
         }
     }
 
-    public static void disconnect(Connection conn) {
+
+
+    public static void disconnect(Connection conn) {										//metodo da usare alla chiusura dell'applicazione e che chiude la connessione con il databse
         try {
             if (conn != null)
                 conn.close();

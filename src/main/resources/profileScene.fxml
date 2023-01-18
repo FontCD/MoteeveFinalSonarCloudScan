@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #87BEEC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.SceneController">
+    <Button layoutX="51.0" layoutY="320.0" mnemonicParsing="false" onAction="#customizeProfileTry" prefHeight="100.0" prefWidth="500.0" text="Customize card" />
+    <Button layoutX="50.0" layoutY="450.0" mnemonicParsing="false" onAction="#changeUsernameTry" prefHeight="50.0" prefWidth="500.0" text="Change username" />
+    <Button layoutX="50.0" layoutY="530.0" mnemonicParsing="false" onAction="#askMoteeveTry" prefHeight="50.0" prefWidth="500.0" text="AskMoteeve" />
+    <Button layoutX="50.0" layoutY="610.0" mnemonicParsing="false" onAction="#logoutTry" prefHeight="50.0" prefWidth="500.0" text="Logout" />
+    <Button layoutY="700.0" mnemonicParsing="false" onAction="#switchToProfileScene" prefHeight="100.0" prefWidth="200.0" text="Profile">
+        <font>
+            <Font size="24.0" />
+        </font>
+        <effect>
+            <InnerShadow />
+        </effect>
+        <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" focusTraversable="true" preserveRatio="true">
+                <image>
+                    <Image url="@profile.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button layoutX="200.0" layoutY="700.0" mnemonicParsing="false" onAction="#switchToMainScene" prefHeight="100.0" prefWidth="200.0" text="Tasks">
+        <font>
+            <Font size="24.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" focusTraversable="true" preserveRatio="true">
+                <image>
+                    <Image url="@tasks.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button layoutX="400.0" layoutY="700.0" mnemonicParsing="false" onAction="#switchToAchievementScene" prefHeight="100.0" prefWidth="200.0" text="Achievements">
+        <font>
+            <Font size="18.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" focusTraversable="true" preserveRatio="true">
+                <image>
+                    <Image url="@achievements.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+    <ImageView fx:id="cardView" fitHeight="250.0" fitWidth="500.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@card_silver.png" />
+        </image>
+    </ImageView>
+    <Label fx:id="usernameLabel" layoutX="80.0" layoutY="240.0" prefHeight="35.0" prefWidth="180.0" text="LOADING" textAlignment="CENTER">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+    <Label fx:id="levelLabel" layoutX="80.0" layoutY="190.0" prefHeight="35.0" prefWidth="100.0" text="LV 1">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+    <Label fx:id="experienceLabel" layoutX="320.0" layoutY="240.0" prefHeight="35.0" prefWidth="200.0" text="EXP 0/10" textAlignment="CENTER">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+    <ImageView fx:id="profilePic" fitHeight="100.0" fitWidth="100.0" layoutX="80.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="slot1" fitHeight="60.0" fitWidth="60.0" layoutX="225.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="slot2" fitHeight="60.0" fitWidth="60.0" layoutX="305.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="slot3" fitHeight="60.0" fitWidth="60.0" layoutX="385.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="slot4" fitHeight="60.0" fitWidth="60.0" layoutX="465.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="slot5" fitHeight="60.0" fitWidth="60.0" layoutX="225.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="slot6" fitHeight="60.0" fitWidth="60.0" layoutX="305.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="slot7" fitHeight="60.0" fitWidth="60.0" layoutX="385.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="slot8" fitHeight="60.0" fitWidth="60.0" layoutX="465.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" />
+    <DialogPane id="askMoteeveDialogPane" fx:id="askMoteeveDialogPane" focusTraversable="true" layoutX="100.0" layoutY="180.0" prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: blue;" visible="false">
+        <header>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: #87CEEB;" text="Moteeve:" textAlignment="CENTER">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+        </header>
+        <content>
+            <AnchorPane prefHeight="200.0" prefWidth="407.0">
+                <children>
+                    <Button layoutX="100.0" layoutY="150.0" mnemonicParsing="false" onAction="#askMoteeveSuccess" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green;" text="Thank you!">
+                        <font>
+                            <Font size="24.0" />
+                        </font>
+                    </Button>
+                    <Label contentDisplay="CENTER" layoutX="20.0" layoutY="25.0" prefHeight="100.0" prefWidth="360.0" style="-fx-background-color: white;" text="Random motivational phrase sample" wrapText="true">
+                        <font>
+                            <Font size="24.0" />
+                        </font>
+                    </Label>
+                </children>
+            </AnchorPane>
+        </content>
+    </DialogPane>
+    <DialogPane id="logoutDialogPane" fx:id="logoutDialogPane" focusTraversable="true" layoutX="100.0" layoutY="180.0" prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: blue;" visible="false">
+        <header>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: #87CEEB;" text="Exit Moteeve?" textAlignment="CENTER">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+        </header>
+        <content>
+            <AnchorPane prefHeight="200.0" prefWidth="407.0">
+                <children>
+                    <Button layoutX="50.0" layoutY="150.0" mnemonicParsing="false" onAction="#logoutSuccess" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: green;" text="Yes" />
+                    <Button layoutX="250.0" layoutY="150.0" mnemonicParsing="false" onAction="#logoutFail" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: red;" text="No" />
+                </children>
+            </AnchorPane>
+        </content>
+    </DialogPane>
+    <DialogPane id="logoutDialogPane" fx:id="changeUsernameDialogPane" focusTraversable="true" layoutX="100.0" layoutY="180.0" prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: blue;" visible="false">
+        <header>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: #87CEEB;" text="Select new username" textAlignment="CENTER">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+        </header>
+        <content>
+            <AnchorPane prefHeight="200.0" prefWidth="407.0">
+                <children>
+                    <Button layoutX="50.0" layoutY="150.0" mnemonicParsing="false" onAction="#changeUsernameSuccess" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: green;" text="Confirm" />
+                    <Button layoutX="250.0" layoutY="150.0" mnemonicParsing="false" onAction="#changeUsernameFail" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: red;" text="Back" />
+                    <TextField fx:id="usernameTextField" layoutX="75.0" layoutY="65.0" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: white;" />
+                </children>
+            </AnchorPane>
+        </content>
+    </DialogPane>
+    <DialogPane id="logoutDialogPane" fx:id="customizeProfileDialogPane" focusTraversable="true" layoutX="100.0" layoutY="180.0" prefHeight="250.0" prefWidth="400.0" style="-fx-background-color: blue;" visible="false">
+        <header>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: #87CEEB;" text="What do you want to do?" textAlignment="CENTER">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+        </header>
+        <content>
+            <AnchorPane prefHeight="200.0" prefWidth="407.0">
+                <children>
+                    <Button layoutX="100.0" layoutY="135.0" mnemonicParsing="false" onAction="#customizeProfileFail" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: red;" text="Back" />
+                    <Button layoutX="100.0" layoutY="75.0" mnemonicParsing="false" onAction="#changeProfilePic" prefHeight="50.0" prefWidth="200.0" text="Change profile pic" />
+                    <Button layoutX="100.0" layoutY="15.0" mnemonicParsing="false" onAction="#addStickersToCardTry" prefHeight="50.0" prefWidth="200.0" text="Add sticker to card" />
+                </children>
+            </AnchorPane>
+        </content>
+    </DialogPane>
+    <DialogPane fx:id="selectStickerDialogPane" layoutX="100.0" layoutY="40.0" prefHeight="600.0" prefWidth="403.0" visible="false">
+        <header>
+            <Label alignment="CENTER" prefWidth="300.0" style="-fx-background-color: #87CEEB;" text="Select a sticker">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+        </header>
+        <content>
+            <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: blue;">
+                <children>
+                    <Button layoutX="50.0" layoutY="515.0" mnemonicParsing="false" onAction="#addStickersToCardFail" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: orange;" text="Back" />
+                    <ListView fx:id="availableStickersListView" fixedCellSize="40.0" layoutX="50.0" layoutY="15.0" prefHeight="420.0" prefWidth="300.0" style="-fx-background-color: white;" />
+                    <Button layoutX="50.0" layoutY="450.0" mnemonicParsing="false" onAction="#addStickersToCardSuccess" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: green;" text="Choose sticker" />
+                </children>
+            </AnchorPane>
+        </content>
+    </DialogPane>
+    <DialogPane fx:id="selectSlotDialogPane" layoutX="100.0" layoutY="40.0" prefHeight="600.0" prefWidth="403.0" visible="false">
+        <header>
+            <Label alignment="CENTER" prefWidth="300.0" style="-fx-background-color: #87CEEB;" text="Select a slot">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+        </header>
+        <content>
+            <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: blue;">
+                <children>
+                    <Button layoutX="50.0" layoutY="515.0" mnemonicParsing="false" onAction="#selectSlotFail" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: orange;" text="Back" />
+                    <ListView fx:id="slotsListView" fixedCellSize="40.0" layoutX="50.0" layoutY="15.0" prefHeight="420.0" prefWidth="300.0" style="-fx-background-color: white;" />
+                    <Button layoutX="50.0" layoutY="450.0" mnemonicParsing="false" onAction="#selectSlotSuccess" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: green;" text="Choose slot" />
+                </children>
+            </AnchorPane>
+        </content>
+    </DialogPane>
+    <DialogPane fx:id="startingMessageDialogPane" prefHeight="625.0" prefWidth="600.0" style="-fx-background-color: blue;">
+        <content>
+            <AnchorPane prefHeight="625.0" prefWidth="600.0">
+                <children>
+                    <Button contentDisplay="CENTER" layoutX="50.0" layoutY="390.0" mnemonicParsing="false" onAction="#putOffStartingMessage" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: green; -fx-border-color: black;" text="Let's go!" />
+                    <Label layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: black;" text="Remember that Moteeve's aim is to help you to live your life at its best! You will be free to complete tasks and achievements whenever you want, even if you didn't really accomplish the missions. It's up to you to be honest. Your level is meaningless if you cheat, but if you don't, seeing result will feel even better. Keep that in mind but most importantly, have fun!" wrapText="true">
+                        <font>
+                            <Font size="24.0" />
+                        </font>
+                    </Label>
+                </children>
+            </AnchorPane>
+        </content>
+        <header>
+            <Label alignment="CENTER" style="-fx-background-color: #87CEEB; -fx-border-color: black;" text="Welcome back!">
+                <font>
+                    <Font size="40.0" />
+                </font>
+            </Label>
+        </header>
+    </DialogPane>
+</AnchorPane>
