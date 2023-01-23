@@ -2,7 +2,6 @@ package logic.completeachievement;
 
 import logic.factory.BaseObject;
 
-import java.util.List;
 
 public class CompleteAchievementAchievementBean {
 

@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 public class SceneController {
 
     private Stage stage;
@@ -126,7 +127,8 @@ public class SceneController {
     @FXML
     private ListView<String> slotsListView;
 
-    private final List<String> slotList = new ArrayList<>(){{add("Slot1"); add("Slot2"); add("Slot3"); add("Slot4"); add("Slot5"); add("Slot6"); add("Slot7"); add("Slot8"); add("Remove all stickers"); }};
+    private List<String> slotList = new ArrayList<>(){{add("Slot1"); add("Slot2"); add("Slot3"); add("Slot4"); add("Slot5"); add("Slot6"); add("Slot7"); add("Slot8"); add("Remove all stickers");}};
+
     private String currentSlots;
     private String finalUrl;
 
@@ -293,12 +295,14 @@ public class SceneController {
     public void refreshTaskPage() {
         int i = 1;
         for(BaseObject tsk: tskList) {
-            showTask("Task" + i);
+            showTask("Task" + tsk.getId());
             i = i + 1;
         }
     }
     public void showTask(String index){
         String message = "NESSUNA TASK PRESENTE, CHIEDI A MOTEEVE DI DARTENE UNA NUOVA!";
+        String baseColor = "-fx-background-color: white";
+
 
         switch (index) {
 
@@ -306,7 +310,7 @@ public class SceneController {
 
                 if (tskList.get(0).getStatus()) {
                     dailyTask1.setText(message);
-                    dailyTask1.setStyle("-fx-background-color: white");
+                    dailyTask1.setStyle(baseColor);
 
                 } else {
                     dailyTask1.setText(tskList.get(0).getScript());
@@ -317,7 +321,7 @@ public class SceneController {
 
                 if (tskList.get(1).getStatus()) {
                     dailyTask2.setText(message);
-                    dailyTask2.setStyle("-fx-background-color: white");
+                    dailyTask2.setStyle(baseColor);
                 } else {
                     dailyTask2.setText(tskList.get(1).getScript());
                     dailyTask2.setStyle("-fx-background-color: " + tskList.get(1).getColor());
@@ -327,7 +331,7 @@ public class SceneController {
 
                 if (tskList.get(2).getStatus()) {
                     dailyTask3.setText(message);
-                    dailyTask3.setStyle("-fx-background-color: white");
+                    dailyTask3.setStyle(baseColor);
                 } else {
                     dailyTask3.setText(tskList.get(2).getScript());
                     dailyTask3.setStyle("-fx-background-color: " + tskList.get(2).getColor());
@@ -337,7 +341,7 @@ public class SceneController {
 
                 if (tskList.get(3).getStatus()) {
                     dailyTask4.setText(message);
-                    dailyTask4.setStyle("-fx-background-color: white");
+                    dailyTask4.setStyle(baseColor);
                 } else {
                     dailyTask4.setText(tskList.get(3).getScript());
                     dailyTask4.setStyle("-fx-background-color: " + tskList.get(3).getColor());
@@ -347,7 +351,7 @@ public class SceneController {
 
                 if (tskList.get(4).getStatus()) {
                     weeklyTask1.setText(message);
-                    weeklyTask1.setStyle("-fx-background-color: white");
+                    weeklyTask1.setStyle(baseColor);
                 } else {
                     weeklyTask1.setText(tskList.get(4).getScript());
                     weeklyTask1.setStyle("-fx-background-color: " + tskList.get(4).getColor());
@@ -357,12 +361,13 @@ public class SceneController {
 
                 if (tskList.get(5).getStatus()) {
                     weeklyTask2.setText(message);
-                    weeklyTask2.setStyle("-fx-background-color: white");
+                    weeklyTask2.setStyle(baseColor);
                 } else {
                     weeklyTask2.setText(tskList.get(5).getScript());
                     weeklyTask2.setStyle("-fx-background-color: " + tskList.get(5).getColor());
                 }
         }
+
     }
     //-------------------------------------------------CHANGE USERNAME
     @FXML
@@ -415,12 +420,14 @@ public class SceneController {
     //------------------------------------------------------COMPLETE TASK
 
     private int tskIndex;
+    private String startingMessage = "Rewards: ";
+    private String endMessage = " experience points";
     @FXML
     public void completeDailyTask1Try() {
         tskIndex = 1;
         if(!tskList.get(tskIndex-1).getStatus()) {
             completeTaskDialogPane.setVisible(true);
-            completeTaskRewardLabel.setText("Rewards: " + tskList.get(0).getReward() + " experience points");
+            completeTaskRewardLabel.setText(startingMessage + tskList.get(0).getReward() + endMessage);
         }
     }
     @FXML
@@ -428,7 +435,7 @@ public class SceneController {
         tskIndex = 2;
         if(!tskList.get(tskIndex-1).getStatus()) {
             completeTaskDialogPane.setVisible(true);
-            completeTaskRewardLabel.setText("Rewards: " + tskList.get(1).getReward() + " experience points");
+            completeTaskRewardLabel.setText(startingMessage + tskList.get(1).getReward() + endMessage );
         }
     }
     @FXML
@@ -436,7 +443,7 @@ public class SceneController {
         tskIndex = 3;
         if (!tskList.get(tskIndex - 1).getStatus()) {
             completeTaskDialogPane.setVisible(true);
-            completeTaskRewardLabel.setText("Rewards: " + tskList.get(2).getReward() + " experience points");
+            completeTaskRewardLabel.setText(startingMessage + tskList.get(2).getReward() + endMessage );
         }
     }
     @FXML
@@ -444,7 +451,7 @@ public class SceneController {
         tskIndex = 4;
         if (!tskList.get(tskIndex - 1).getStatus()) {
             completeTaskDialogPane.setVisible(true);
-            completeTaskRewardLabel.setText("Rewards: " + tskList.get(3).getReward() + " experience points");
+            completeTaskRewardLabel.setText(startingMessage + tskList.get(3).getReward() + endMessage );
         }
     }
 
@@ -453,7 +460,7 @@ public class SceneController {
         tskIndex = 5;
         if(!tskList.get(tskIndex-1).getStatus()) {
             completeTaskDialogPane.setVisible(true);
-            completeTaskRewardLabel.setText("Rewards: " + tskList.get(4).getReward() + " experience points");
+            completeTaskRewardLabel.setText(startingMessage + tskList.get(4).getReward() + endMessage );
         }
     }
     @FXML
@@ -461,7 +468,7 @@ public class SceneController {
         tskIndex = 6;
         if(!tskList.get(tskIndex-1).getStatus()){
             completeTaskDialogPane.setVisible(true);
-            completeTaskRewardLabel.setText("Rewards: " + tskList.get(5).getReward() +" experience points");
+            completeTaskRewardLabel.setText(startingMessage + tskList.get(5).getReward() +endMessage );
         }
     }
 
@@ -577,13 +584,12 @@ public class SceneController {
 
 
         for(Sticker stk : stkList) {
-            if(stk != null && stk.getStickerUrl() != null) {
                 if (stk.getStatus()) {
                     availableStickersListView.getItems().addAll(stk.getName());
                 }
             }
         }
-    }
+
 
     @FXML
     public void addStickersToCardFail() {
@@ -684,12 +690,5 @@ public class SceneController {
         }
         setAllDialogPanesInvisible();
     }
-
-    public void completeDailyTaskTry(ActionEvent actionEvent) {
-    }
-
-    public void completeWeeklyTaskTry(ActionEvent actionEvent) {
-    }
-
 
 }

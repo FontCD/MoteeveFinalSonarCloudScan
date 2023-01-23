@@ -5,7 +5,6 @@ import logic.dao.CardDAOJDBC;
 import logic.dao.ChangeUsernameDAOFS;
 import logic.model.Card;
 
-import java.sql.SQLException;
 
 public class ChangeUsernameController {
     String persistence = "jdbc";
