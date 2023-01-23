@@ -280,4 +280,6 @@ public class CardDAOJDBC {
         }
     }
 
+    public void updateUsername(String newUsername) {
+    }
 }

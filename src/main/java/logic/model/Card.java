@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Card {
 
-    private String userName;
+    private String username;
     private int exp;
     private int level;
     private int changes;
@@ -15,7 +15,7 @@ public class Card {
     private List<Sticker> slots = new ArrayList<>();
 
     public Card(String userName, int exp, int level, int changes,String profileImage,List<Sticker> slots) {
-        this.userName = userName;
+        this.username = userName;
         this.exp = exp;
         this.level = level;
         this.changes = changes;
@@ -24,7 +24,7 @@ public class Card {
     }
 
     public String getUserName() {
-        return this.userName;
+        return this.username;
     }
 
     public int getExp() {
@@ -36,7 +36,7 @@ public class Card {
     }
     public List<Sticker> getSlots() {return this.slots;}
 
-    public String getProfileImahe() {
+    public String getProfileImage() {
         return this.profileImage;
     }
 
@@ -50,6 +50,10 @@ public class Card {
 
     public void addReward(int exp){
         this.exp = this.exp + exp;
+    }
+
+    public void changeUsername(String username) {
+        this.username = username;
     }
 
 }

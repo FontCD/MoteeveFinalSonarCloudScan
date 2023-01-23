@@ -70,10 +70,8 @@ public class Task implements BaseObject, Subject {
     }
 
     @Override
-    public void setComplete() throws Exception {
-        this.id = 9999;
+    public void setComplete() {
         this.status = true;
-
 
         notifyObservers();
     }

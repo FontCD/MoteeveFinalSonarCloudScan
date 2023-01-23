@@ -219,4 +219,46 @@
             </Label>
         </header>
     </DialogPane>
+    <DialogPane fx:id="noSlotSelectedDialogPane" layoutX="100.0" layoutY="40.0" prefHeight="600.0" prefWidth="403.0" visible="false">
+        <header>
+            <Label alignment="CENTER" prefWidth="300.0" style="-fx-background-color: #87CEEB;" text="No slot was selected">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+        </header>
+        <content>
+            <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: blue;">
+                <children>
+                    <Button layoutX="50.0" layoutY="515.0" mnemonicParsing="false" onAction="#noSlotSelected" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: orange;" text="Back" />
+                    <Label layoutX="106.0" layoutY="201.0" style="-fx-background-color: white; -fx-border-color: black;" text="Please select a slot">
+                        <font>
+                            <Font size="24.0" />
+                        </font>
+                    </Label>
+                </children>
+            </AnchorPane>
+        </content>
+    </DialogPane>
+    <DialogPane fx:id="noStickerSelectedDialogPane" layoutX="100.0" layoutY="40.0" prefHeight="600.0" prefWidth="403.0" visible="false">
+        <header>
+            <Label alignment="CENTER" prefWidth="300.0" style="-fx-background-color: #87CEEB;" text="No sticker was selected">
+                <font>
+                    <Font size="24.0" />
+                </font>
+            </Label>
+        </header>
+        <content>
+            <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: blue;">
+                <children>
+                    <Button layoutX="50.0" layoutY="515.0" mnemonicParsing="false" onAction="#noStickerSelected" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: orange;" text="Back" />
+                    <Label layoutX="90.0" layoutY="200.0" style="-fx-background-color: white; -fx-border-color: black;" text="Please select a sticker">
+                        <font>
+                            <Font size="24.0" />
+                        </font>
+                    </Label>
+                </children>
+            </AnchorPane>
+        </content>
+    </DialogPane>
 </AnchorPane>

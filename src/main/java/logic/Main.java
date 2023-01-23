@@ -26,7 +26,6 @@ public class Main extends Application {
         SceneController.setUp();
 
         stage.show();
-        Connectivity.disconnect(Connectivity.getConn());
     }
 
 }

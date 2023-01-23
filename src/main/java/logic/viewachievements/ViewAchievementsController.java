@@ -4,6 +4,7 @@ import logic.dao.AchievementDAOJDBC;
 import logic.dao.TaskDAOJDBC;
 import logic.factory.BaseObject;
 import logic.factory.ObjectFactory;
+import logic.observer.AchievementObserver;
 import logic.observer.TaskObserver;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class ViewAchievementsController {
 
     public ViewAchievementsListBean createAchList() throws Exception {
         int achInd = 1;
-        int maxAch = 3;
+        int maxAch = 11;
         List<BaseObject> listAch = new ArrayList<>();
 
         AchievementDAOJDBC dao = new AchievementDAOJDBC();
@@ -27,11 +28,11 @@ public class ViewAchievementsController {
             int reward = dao.extractReward(achInd);
 
 
-            BaseObject tsk = factory.createBaseObject(achInd, name, script, color, status, reward, "Task");
-            listAch.add(tsk);
+            BaseObject ach = factory.createBaseObject(achInd, name, script, color, status, reward, "Ach");
+            listAch.add(ach);
 
-            TaskObserver obs = new TaskObserver(tsk);
-            tsk.attach(obs);
+            AchievementObserver obs = new AchievementObserver(ach);
+            ach.attach(obs);
 
             achInd = achInd + 1;
 

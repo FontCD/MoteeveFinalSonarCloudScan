@@ -12,9 +12,17 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
+import logic.completeachievement.CompleteAchievementAchievementBean;
+import logic.completeachievement.CompleteAchievementController;
+import logic.completeachievement.CompleteAchievementStickerListBean;
+import logic.completetask.CompleteTaskController;
+import logic.completetask.CompleteTaskIdCurrentBean;
+import logic.completetask.CompleteTaskTaskBean;
+import logic.completetask.CompleteTaskCardBean;
 import logic.factory.BaseObject;
 import logic.model.Sticker;
 import logic.model.Card;
+
 import logic.viewachievements.ViewAchievementsController;
 import logic.viewachievements.ViewAchievementsListBean;
 import logic.viewcard.ViewCardController;
@@ -24,7 +32,6 @@ import logic.viewstickers.ViewStickersListBean;
 import logic.viewtasks.ViewTasksController;
 import logic.viewtasks.ViewTasksListBean;
 
-import java.sql.SQLException;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,6 +46,8 @@ public class SceneController {
     private Parent root;
 
     private static List<BaseObject> achList;
+
+    private String selectedAchievement;
     private static List<BaseObject> tskList;
     private static List<Sticker> stkList;
 
@@ -46,30 +55,6 @@ public class SceneController {
 
 
     //-----------------------------------------BUTTONS
-    @FXML
-    private Button achievement1;
-    @FXML
-    private Button achievement2;
-    @FXML
-    private Button achievement3;
-    @FXML
-    private Button achievement4;
-    @FXML
-    private Button achievement5;
-    @FXML
-    private Button achievement6;
-
-    @FXML
-    private Button achievement7;
-    @FXML
-    private Button achievement8;
-    @FXML
-    private Button achievement9;
-    @FXML
-    private Button achievement10;
-    @FXML
-    private Button achievement11;
-
     @FXML
     private Button dailyTask1;
     @FXML
@@ -138,26 +123,25 @@ public class SceneController {
     @FXML
     private ListView<String> availableStickersListView;
 
-
     @FXML
     private ListView<String> slotsListView;
-    String[] slots = {"Slot1", "Slot2", "Slot3", "Slot4", "Slot5", "Slot6", "Slot7", "Slot8", "Remove all stickers"};
-    String currentSlots;
 
-    String mySticker;
-    String mySlot;
+    private final List<String> slotList = new ArrayList<>(){{add("Slot1"); add("Slot2"); add("Slot3"); add("Slot4"); add("Slot5"); add("Slot6"); add("Slot7"); add("Slot8"); add("Remove all stickers"); }};
+    private String currentSlots;
+    private String finalUrl;
 
     @FXML
     private ListView<String> achListView;
+
 
     //---------------------------------------TEXT FIELDS
     @FXML
     private TextField usernameTextField;
 
     //---------------------------------------DIALOG PANES
-
     @FXML
-    private DialogPane achievementLoadingDialogPane;
+    private DialogPane noSlotSelectedDialogPane ;
+
     @FXML
     private DialogPane startingMessageDialogPane;
     @FXML
@@ -176,13 +160,21 @@ public class SceneController {
     private DialogPane completeAchievementDialogPane;
 
     @FXML
+    private DialogPane noAchievementSelectedDialogPane;
+    @FXML
     private DialogPane customizeProfileDialogPane;
 
     @FXML
     private DialogPane selectStickerDialogPane;
 
     @FXML
+    private DialogPane noStickerSelectedDialogPane;
+
+    @FXML
     private DialogPane selectSlotDialogPane;
+
+    @FXML
+    private DialogPane noSlotSelected;
 
     //------------------------------------------------------STARTING SETUP
     public static void setUp() throws Exception {
@@ -208,7 +200,6 @@ public class SceneController {
         stkList = bean.getBean();
     }
     private static void setCard() throws Exception {
-        //bisogna modificare tutta la classe e tutto il model per fare la card, metti tutti gli otto sticker dellla card di base "empty"
            ViewCardController controller = new ViewCardController();
            ViewCardUserBean bean = controller.createCard();
            card = bean.getBean();
@@ -219,6 +210,7 @@ public class SceneController {
     //-----------------------------------------------------MANAGEMENT
     public void setAllDialogPanesInvisible() {
 
+        noStickerSelectedDialogPane.setVisible(false);
         logoutDialogPane.setVisible(false);
         askMoteeveDialogPane.setVisible(false);
         changeUsernameDialogPane.setVisible(false);
@@ -270,65 +262,107 @@ public class SceneController {
             }
                 i= i+1;
         }
+
+        Circle clip = new Circle(profilePic.getFitWidth());
+        clip.setRadius(50.0);
+        clip.setCenterX(profilePic.getX() + 50);
+        clip.setCenterY(profilePic.getY() + 50);
+        profilePic.setClip(clip);
+
+        Image myPic = new Image(card.getProfileImage());
+        profilePic.setImage(myPic);
+
         startingMessageDialogPane.setVisible(false);
     }
 
     @FXML
     public void refreshAchievementPage(){
-        System.out.println("gay");
+        if (!completeAchievementDialogPane.isVisible()) {
+            achListView.getItems().clear();
+            for(BaseObject ach: achList){
+                if(ach!=null){
+                    achListView.getItems().addAll(ach.getScript());
+                }
+            }
+        }
     }
+
+    //-------------TASK PAGE-----------------
 
     @FXML
     public void refreshTaskPage() {
+        int i = 1;
+        for(BaseObject tsk: tskList) {
+            showTask("Task" + i);
+            i = i + 1;
+        }
+    }
+    public void showTask(String index){
         String message = "NESSUNA TASK PRESENTE, CHIEDI A MOTEEVE DI DARTENE UNA NUOVA!";
 
-        //------DAILY TASK1-------
-        if (tskList.get(0).getScript().equals("Completato")){
-            dailyTask1.setText(message);
-        } else {
-            dailyTask1.setText(tskList.get(0).getScript());
-            dailyTask1.setStyle("-fx-background-color: " + tskList.get(0).getColor());
-        }
+        switch (index) {
 
-        //------DAILY TASK2-------
-        if (tskList.get(1).getScript().equals("Completato")){
-            dailyTask1.setText(message);
-        } else {
-            dailyTask2.setText(tskList.get(1).getScript());
-            dailyTask2.setStyle("-fx-background-color: " + tskList.get(1).getColor());
-        }
+            case "Task1":
 
-        //------DAILY TASK3-------
-        if (tskList.get(2).getScript().equals("Completato")){
-            dailyTask1.setText(message);
-        } else {
-            dailyTask3.setText(tskList.get(2).getScript());
-            dailyTask3.setStyle("-fx-background-color: " + tskList.get(2).getColor());
-        }
+                if (tskList.get(0).getStatus()) {
+                    dailyTask1.setText(message);
+                    dailyTask1.setStyle("-fx-background-color: white");
 
-        //------DAILY TASK4-------
-        if (tskList.get(3).getScript().equals("Completato")){
-            dailyTask1.setText(message);
-        } else {
-            dailyTask4.setText(tskList.get(3).getScript());
-            dailyTask4.setStyle("-fx-background-color: " + tskList.get(3).getColor());
-        }
-        //------WEEKLY TASK1------
-        if (tskList.get(4).getScript().equals("Completato")){
-            dailyTask1.setText(message);
-        } else {
-            weeklyTask1.setText(tskList.get(4).getScript());
-            weeklyTask1.setStyle("-fx-background-color: " + tskList.get(4).getColor());
-        }
+                } else {
+                    dailyTask1.setText(tskList.get(0).getScript());
+                    dailyTask1.setStyle("-fx-background-color: " + tskList.get(0).getColor());
+                }
 
-        //------WEEKLY TASK2-------
-        if (tskList.get(5).getScript().equals("Completato")){
-            dailyTask1.setText(message);
-        } else {
-            weeklyTask2.setText(tskList.get(5).getScript());
-            weeklyTask2.setStyle("-fx-background-color: " + tskList.get(5).getColor());
-        }
+            case "Task2":
 
+                if (tskList.get(1).getStatus()) {
+                    dailyTask2.setText(message);
+                    dailyTask2.setStyle("-fx-background-color: white");
+                } else {
+                    dailyTask2.setText(tskList.get(1).getScript());
+                    dailyTask2.setStyle("-fx-background-color: " + tskList.get(1).getColor());
+                }
+
+            case "Task3":
+
+                if (tskList.get(2).getStatus()) {
+                    dailyTask3.setText(message);
+                    dailyTask3.setStyle("-fx-background-color: white");
+                } else {
+                    dailyTask3.setText(tskList.get(2).getScript());
+                    dailyTask3.setStyle("-fx-background-color: " + tskList.get(2).getColor());
+                }
+
+            case "Task4":
+
+                if (tskList.get(3).getStatus()) {
+                    dailyTask4.setText(message);
+                    dailyTask4.setStyle("-fx-background-color: white");
+                } else {
+                    dailyTask4.setText(tskList.get(3).getScript());
+                    dailyTask4.setStyle("-fx-background-color: " + tskList.get(3).getColor());
+                }
+
+            case "Task5":
+
+                if (tskList.get(4).getStatus()) {
+                    weeklyTask1.setText(message);
+                    weeklyTask1.setStyle("-fx-background-color: white");
+                } else {
+                    weeklyTask1.setText(tskList.get(4).getScript());
+                    weeklyTask1.setStyle("-fx-background-color: " + tskList.get(4).getColor());
+                }
+
+            case "Task6":
+
+                if (tskList.get(5).getStatus()) {
+                    weeklyTask2.setText(message);
+                    weeklyTask2.setStyle("-fx-background-color: white");
+                } else {
+                    weeklyTask2.setText(tskList.get(5).getScript());
+                    weeklyTask2.setStyle("-fx-background-color: " + tskList.get(5).getColor());
+                }
+        }
     }
     //-------------------------------------------------CHANGE USERNAME
     @FXML
@@ -343,7 +377,7 @@ public class SceneController {
     }
 
     @FXML
-    public void changeUsernameSuccess() throws SQLException {
+    public void changeUsernameSuccess(){
         String username = usernameTextField.getText();
         //qui una volta c era il caso d uso di federico RIP
         changeUsernameDialogPane.setVisible(false);
@@ -379,16 +413,56 @@ public class SceneController {
     }
 
     //------------------------------------------------------COMPLETE TASK
+
+    private int tskIndex;
     @FXML
-    public void completeDailyTaskTry() {
-        completeTaskDialogPane.setVisible(true);
-        completeTaskRewardLabel.setText("Rewards: 100 experience points");
+    public void completeDailyTask1Try() {
+        tskIndex = 1;
+        if(!tskList.get(tskIndex-1).getStatus()) {
+            completeTaskDialogPane.setVisible(true);
+            completeTaskRewardLabel.setText("Rewards: " + tskList.get(0).getReward() + " experience points");
+        }
+    }
+    @FXML
+    public void completeDailyTask2Try() {
+        tskIndex = 2;
+        if(!tskList.get(tskIndex-1).getStatus()) {
+            completeTaskDialogPane.setVisible(true);
+            completeTaskRewardLabel.setText("Rewards: " + tskList.get(1).getReward() + " experience points");
+        }
+    }
+    @FXML
+    public void completeDailyTask3Try() {
+        tskIndex = 3;
+        if (!tskList.get(tskIndex - 1).getStatus()) {
+            completeTaskDialogPane.setVisible(true);
+            completeTaskRewardLabel.setText("Rewards: " + tskList.get(2).getReward() + " experience points");
+        }
+    }
+    @FXML
+    public void completeDailyTask4Try() {
+        tskIndex = 4;
+        if (!tskList.get(tskIndex - 1).getStatus()) {
+            completeTaskDialogPane.setVisible(true);
+            completeTaskRewardLabel.setText("Rewards: " + tskList.get(3).getReward() + " experience points");
+        }
     }
 
     @FXML
-    public void completeWeeklyTaskTry() {
-        completeTaskDialogPane.setVisible(true);
-        completeTaskRewardLabel.setText("Rewards: 500 experience points");
+    public void completeWeeklyTask1Try() {
+        tskIndex = 5;
+        if(!tskList.get(tskIndex-1).getStatus()) {
+            completeTaskDialogPane.setVisible(true);
+            completeTaskRewardLabel.setText("Rewards: " + tskList.get(4).getReward() + " experience points");
+        }
+    }
+    @FXML
+    public void completeWeeklyTask2Try() {
+        tskIndex = 6;
+        if(!tskList.get(tskIndex-1).getStatus()){
+            completeTaskDialogPane.setVisible(true);
+            completeTaskRewardLabel.setText("Rewards: " + tskList.get(5).getReward() +" experience points");
+        }
     }
 
     @FXML
@@ -397,25 +471,61 @@ public class SceneController {
     }
 
     @FXML
-    public void completeTaskSuccess() throws SQLException {
-        completeTaskDialogPane.setVisible(false);
+    public void completeTaskSuccess() throws Exception {
+            CompleteTaskController controller = new CompleteTaskController();
+
+
+            CompleteTaskTaskBean taskBean = new CompleteTaskTaskBean() ;
+            taskBean.setBean(tskList.get(tskIndex-1));
+
+            CompleteTaskCardBean userBean = new CompleteTaskCardBean();
+            userBean.setBean(card);
+
+            CompleteTaskIdCurrentBean idCurrentBean = new CompleteTaskIdCurrentBean();
+            idCurrentBean.setBean(tskIndex);
+
+            controller.endTask(taskBean, userBean, idCurrentBean);
+
+            showTask("Task" + tskIndex);
+            completeTaskDialogPane.setVisible(false);
     }
 
     //-----------------------------------------------------COMPLETE ACHIEVEMENTS
+
+    private int achIndex;
     @FXML
     public void completeAchievementTry() {
-        completeAchievementDialogPane.setVisible(true);
-        completeAchievementRewardLabel.setText("Rewards: " + "INFO FROM DB");
+        try{
+            int index = achListView.getSelectionModel().getSelectedIndex();
+            selectedAchievement = achList.get(index).getScript();
+            achIndex = achList.get(index).getId();
+            if(!achList.get(index).getScript().equals("Completato")) {
+                completeAchievementRewardLabel.setText("You will receive a new sticker");
+                completeAchievementDialogPane.setVisible(true);
+            }
+        }catch(IndexOutOfBoundsException e){
+            noAchievementSelectedDialogPane.setVisible(true);
+        }
     }
 
     @FXML
     public void completeAchievementFail() {
         completeAchievementDialogPane.setVisible(false);
+        noAchievementSelectedDialogPane.setVisible(false);
     }
 
     @FXML
-    public void completeAchievementSuccess() {
-        System.out.println("TBD");
+    public void completeAchievementSuccess() throws Exception {
+
+        CompleteAchievementAchievementBean bean1 = new CompleteAchievementAchievementBean() ;
+        bean1.setBean(achList.get(achIndex-1));
+
+        CompleteAchievementStickerListBean bean2 = new CompleteAchievementStickerListBean();
+        bean2.setBean(stkList);
+
+        CompleteAchievementController controller = new CompleteAchievementController() ;
+        controller.unlockAchievement(bean1,bean2) ;
+
         completeAchievementDialogPane.setVisible(false);
     }
 
@@ -468,7 +578,9 @@ public class SceneController {
 
         for(Sticker stk : stkList) {
             if(stk != null && stk.getStickerUrl() != null) {
-                availableStickersListView.getItems().addAll(stk.getName());
+                if (stk.getStatus()) {
+                    availableStickersListView.getItems().addAll(stk.getName());
+                }
             }
         }
     }
@@ -481,10 +593,19 @@ public class SceneController {
 
     @FXML
     public void addStickersToCardSuccess() {
+        try{
+            int index = availableStickersListView.getSelectionModel().getSelectedIndex();
+            finalUrl = stkList.get(index).getStickerUrl();
+            selectSlotTry();
+        }catch(IndexOutOfBoundsException e){
+            noStickerSelectedDialogPane.setVisible(true);
+        }
 
-        //metti l url dello sticker selezionato come immagine dello slot
-        setAllDialogPanesInvisible();
+    }
 
+    @FXML
+    public void noStickerSelected() {
+        noStickerSelectedDialogPane.setVisible(false);
     }
 
     @FXML
@@ -492,7 +613,7 @@ public class SceneController {
         setAllDialogPanesInvisible();
         selectSlotDialogPane.setVisible(true);
         slotsListView.getItems().clear();
-        slotsListView.getItems().addAll(slots);
+        slotsListView.getItems().addAll(slotList);
     }
 
     @FXML
@@ -504,15 +625,17 @@ public class SceneController {
     @FXML
     public void selectSlotSuccess() {
 
-        String selectedSlot = slotsListView.getSelectionModel().getSelectedItem();
-        if (selectedSlot != null) {
-            System.out.println("Your selected slot: " + selectedSlot);
-            String mySlot = selectedSlot;
-            applicateStickerToSlot(mySlot,"cabula");
-        } else {
-            System.out.println("No Slot was selected");
+        try{
+            int index = slotsListView.getSelectionModel().getSelectedIndex();
+            String mySlot = slotList.get(index);
+            applicateStickerToSlot(mySlot, finalUrl);
+        }catch(IndexOutOfBoundsException e){
+            noSlotSelectedDialogPane.setVisible(true);
         }
-
+    }
+    @FXML
+    public void noSlotSelected(ActionEvent actionEvent) {
+        noSlotSelectedDialogPane.setVisible(false);
     }
 
     public void applicateStickerToSlot(String mySlot,String finalUrl) {
@@ -561,5 +684,12 @@ public class SceneController {
         }
         setAllDialogPanesInvisible();
     }
+
+    public void completeDailyTaskTry(ActionEvent actionEvent) {
+    }
+
+    public void completeWeeklyTaskTry(ActionEvent actionEvent) {
+    }
+
 
 }

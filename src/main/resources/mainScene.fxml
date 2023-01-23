@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.SceneController">
-   <Button fx:id="dailyTask1" layoutX="50.0" layoutY="145.0" mnemonicParsing="false" onAction="#completeDailyTaskTry" prefHeight="50.0" prefWidth="500.0" text="Refresh to see daily task" />
+   <Button fx:id="dailyTask1" layoutX="50.0" layoutY="145.0" mnemonicParsing="false" onAction="#completeDailyTask1Try" prefHeight="50.0" prefWidth="500.0" style="-fx-border-color: black;" text="Refresh to see daily task" />
    <Button layoutY="700.0" mnemonicParsing="false" onAction="#switchToProfileScene" prefHeight="100.0" prefWidth="200.0" text="Profile">
       <font>
          <Font size="24.0" />
@@ -59,10 +59,10 @@
          <Bloom threshold="1.0" />
       </effect>
    </Label>
-   <Button fx:id="dailyTask2" layoutX="50.0" layoutY="215.0" mnemonicParsing="false" onAction="#completeDailyTaskTry" prefHeight="50.0" prefWidth="500.0" text="Refresh to see daily task" />
-   <Button fx:id="dailyTask3" layoutX="50.0" layoutY="285.0" mnemonicParsing="false" onAction="#completeDailyTaskTry" prefHeight="50.0" prefWidth="500.0" text="Refresh to see daily task" />
-   <Button fx:id="dailyTask4" layoutX="50.0" layoutY="355.0" mnemonicParsing="false" onAction="#completeDailyTaskTry" prefHeight="50.0" prefWidth="500.0" text="Refresh to see daily task" />
-   <Button fx:id="weeklyTask1" layoutX="50.0" layoutY="535.0" mnemonicParsing="false" onAction="#completeWeeklyTaskTry" prefHeight="50.0" prefWidth="500.0" text="Refresh to see weekly task" />
+   <Button fx:id="dailyTask2" layoutX="50.0" layoutY="215.0" mnemonicParsing="false" onAction="#completeDailyTask2Try" prefHeight="50.0" prefWidth="500.0" style="-fx-border-color: black;" text="Refresh to see daily task" />
+   <Button fx:id="dailyTask3" layoutX="50.0" layoutY="285.0" mnemonicParsing="false" onAction="#completeDailyTask3Try" prefHeight="50.0" prefWidth="500.0" style="-fx-border-color: black;" text="Refresh to see daily task" />
+   <Button fx:id="dailyTask4" layoutX="50.0" layoutY="355.0" mnemonicParsing="false" onAction="#completeDailyTask4Try" prefHeight="50.0" prefWidth="500.0" style="-fx-border-color: black;" text="Refresh to see daily task" />
+   <Button fx:id="weeklyTask1" layoutX="50.0" layoutY="535.0" mnemonicParsing="false" onAction="#completeWeeklyTask1Try" prefHeight="50.0" prefWidth="500.0" style="-fx-border-color: black;" text="Refresh to see weekly task" />
    <Label alignment="CENTER" layoutX="200.0" layoutY="455.0" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #87BEED; -fx-border-color: black;" text="Weekly Tasks" underline="true">
       <font>
          <Font size="32.0" />
@@ -71,7 +71,7 @@
          <Bloom threshold="1.0" />
       </effect>
    </Label>
-   <Button fx:id="weeklyTask2" layoutX="50.0" layoutY="605.0" mnemonicParsing="false" onAction="#completeWeeklyTaskTry" prefHeight="50.0" prefWidth="500.0" text="Refresh to see weekly task" />
+   <Button fx:id="weeklyTask2" layoutX="50.0" layoutY="605.0" mnemonicParsing="false" onAction="#completeWeeklyTask2Try" prefHeight="50.0" prefWidth="500.0" style="-fx-border-color: black;" text="Refresh to see weekly task" />
    <DialogPane fx:id="completeTaskDialogPane" layoutX="15.0" layoutY="80.0" prefHeight="500.0" prefWidth="570.0" style="-fx-background-color: blue;" visible="false">
       <content>
          <AnchorPane prefHeight="500.0" prefWidth="570.0">
@@ -102,7 +102,7 @@
          </Label>
       </header>
    </DialogPane>
-   <Button layoutX="200.0" layoutY="15.0" mnemonicParsing="false" onAction="#refreshTaskPage" prefHeight="50.0" prefWidth="200.0" text="Refresh">
+   <Button alignment="CENTER" layoutX="200.0" layoutY="15.0" mnemonicParsing="false" onAction="#refreshTaskPage" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: gray; -fx-border-color: black;" text="Refresh">
       <font>
          <Font size="24.0" />
       </font>

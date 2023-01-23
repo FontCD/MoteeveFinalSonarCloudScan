@@ -130,12 +130,7 @@ public class TaskDAOJDBC {
 
     public void setComplete(int idCurrent, int taskId) throws Exception {
         try{
-
-
             stmt = conn.prepareStatement("UPDATE Task SET Status = 1 WHERE idTask =" + taskId, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY ) ; 		//creo lo statement di update, il set a 1 identifica completato
-            stmt.executeUpdate() ;
-
-            stmt = conn.prepareStatement("UPDATE currentTasks SET Task = 9999 WHERE idCurrentTasks = " + idCurrent);
             stmt.executeUpdate() ;
 
         }finally {
@@ -151,7 +146,7 @@ public class TaskDAOJDBC {
             ResultSet rs = stmt.executeQuery();
 
             rs.first();
-            Date scadenza = rs.getTimestamp("SCadenza");
+            Date scadenza = rs.getTimestamp("Scadenza");
             rs.close();
 
             Date now = new Date();

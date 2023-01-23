@@ -12,7 +12,7 @@ public class ViewStickersController {
 
     public  ViewStickersListBean createStkList() throws Exception {
         int stkInd = 1 ;
-        int maxSticker = 5;
+        int maxSticker = 11;
         List<Sticker> listStk = new ArrayList<>();
 
         StickerDAOJDBC dao = new StickerDAOJDBC();
