@@ -24,9 +24,6 @@ public class TaskDAOJDBC {
             int code = rs.getInt("Task");
             rs.close();
 
-            if(code == 9999){
-                return 9999;
-            }
         } finally {
             Connectivity.close(stmt);                                                                                                                                        //dalla classe connectivity chiudo lo statement
         }

@@ -48,7 +48,6 @@ public class SceneController {
 
     private static List<BaseObject> achList;
 
-    private String selectedAchievement;
     private static List<BaseObject> tskList;
     private static List<Sticker> stkList;
 
@@ -118,8 +117,7 @@ public class SceneController {
     @FXML
     private ImageView slot8;
     @FXML
-    private List<ImageView> slotImage = new ArrayList<>() {{add(slot1); add(slot2); add(slot3); add(slot4); add(slot4); add(slot5); add(slot6); add(slot7); add(slot8); }};
-
+    private final List<ImageView> slotImage = new ArrayList<>() {{add(slot1); add(slot2); add(slot3); add(slot4); add(slot4); add(slot5); add(slot6); add(slot7); add(slot8); }};
     //---------------------------------------LIST VIEWS
     @FXML
     private ListView<String> availableStickersListView;
@@ -504,7 +502,6 @@ public class SceneController {
     public void completeAchievementTry() {
         try{
             int index = achListView.getSelectionModel().getSelectedIndex();
-            selectedAchievement = achList.get(index).getScript();
             achIndex = achList.get(index).getId();
             if(!achList.get(index).getScript().equals("Completato")) {
                 completeAchievementRewardLabel.setText("You will receive a new sticker");
