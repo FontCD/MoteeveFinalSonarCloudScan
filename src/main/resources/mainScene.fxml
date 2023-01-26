@@ -107,4 +107,29 @@
          <Font size="24.0" />
       </font>
    </Button>
+   <DialogPane fx:id="taskNotificationObserverDialogPane" layoutX="15.0" layoutY="135.0" prefHeight="530.0" prefWidth="570.0" style="-fx-background-color: blue;" visible="false">
+      <content>
+         <AnchorPane prefHeight="530.0" prefWidth="570.0">
+            <children>
+               <Label fx:id="taskNotificationObserverLabel" layoutX="60.0" layoutY="160.0" prefHeight="150.0" prefWidth="450.0" style="-fx-background-color: white; -fx-border-color: black;" text="Text modified by the observer" wrapText="true">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+               </Label>
+               <Button alignment="CENTER" layoutX="185.0" layoutY="400.0" mnemonicParsing="false" onAction="#taskObserverNotificationClose" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green; -fx-border-color: black;" text="Ok">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+               </Button>
+            </children>
+         </AnchorPane>
+      </content>
+      <header>
+         <Label alignment="CENTER" style="-fx-background-color: white;" text="Task completata!">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+      </header>
+   </DialogPane>
 </AnchorPane>

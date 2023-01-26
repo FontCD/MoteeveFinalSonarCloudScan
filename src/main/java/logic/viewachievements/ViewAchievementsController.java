@@ -7,12 +7,13 @@ import logic.factory.ObjectFactory;
 import logic.observer.AchievementObserver;
 import logic.observer.TaskObserver;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ViewAchievementsController {
 
-    public ViewAchievementsListBean createAchList() throws Exception {
+    public ViewAchievementsListBean createAchList() throws SQLException {
         int achInd = 1;
         int maxAch = 11;
         List<BaseObject> listAch = new ArrayList<>();

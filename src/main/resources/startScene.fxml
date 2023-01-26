@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.SceneController">
+    <children>
+        <DialogPane fx:id="actorSelectionDialogPane" maxHeight="800.0" maxWidth="600.0" minHeight="800.0" minWidth="600.0" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #87CEEB;">
+            <header>
+                <Label alignment="CENTER" text="Welcome to Moteeve">
+                    <font>
+                        <Font size="50.0" />
+                    </font>
+                </Label>
+            </header>
+            <content>
+                <AnchorPane prefHeight="300.0" prefWidth="600.0">
+                    <children>
+                        <Label alignment="CENTER" layoutX="125.0" layoutY="110.0" style="-fx-border-color: black;" text="Are you a user or a coach?">
+                            <font>
+                                <Font size="30.0" />
+                            </font>
+                        </Label>
+                        <Button alignment="CENTER" layoutX="150.0" layoutY="400.0" mnemonicParsing="false" onAction="#switchToCoachScene" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: orange; -fx-border-color: black;" text="Access as coach">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="CENTER" layoutX="150.0" layoutY="250.0" mnemonicParsing="false" onAction="#switchToMainScene" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: green; -fx-border-color: black;" text="Access as user">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </content>
+        </DialogPane>
+    </children>
+</AnchorPane>

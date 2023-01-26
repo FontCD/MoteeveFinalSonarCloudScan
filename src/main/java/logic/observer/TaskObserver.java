@@ -1,6 +1,9 @@
 package logic.observer;
-
+import javafx.fxml.FXML;
+import logic.SceneController;
 import logic.factory.BaseObject;
+
+import javax.swing.*;
 
 public class TaskObserver implements Observer {
     BaseObject tsk;
@@ -11,6 +14,6 @@ public class TaskObserver implements Observer {
 
     @Override
     public void update() {
-        System.out.println("Compliementi hai completato un la Task " + this.tsk.getName() + ", ora la tua esperienza è aumentata di " + this.tsk.getReward());
+        JOptionPane.showMessageDialog(null,"Complimenti hai completato la Task: " + tsk.getName() + "\n\nControlla nel profilo e vedrai che la tua esperienza è aumentata di " + tsk.getReward() + "!" ,"MESSAGGIO DA MOTEEVE",JOptionPane.INFORMATION_MESSAGE);
     }
 }

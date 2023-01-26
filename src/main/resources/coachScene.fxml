@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.SceneControllerCoach">
+    <children>
+        <Button layoutX="200.0" layoutY="720.0" mnemonicParsing="false" onAction="#exit" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: gray; -fx-border-color: black;" text="Exit">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+        <Button layoutX="200.0" layoutY="40.0" mnemonicParsing="false" onAction="#refresh" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: gray; -fx-border-color: black;" text="Refresh">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+        <TextField fx:id="newTaskTextField" layoutX="100.0" layoutY="230.0" prefHeight="40.0" prefWidth="400.0">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </TextField>
+        <Label alignment="CENTER" layoutX="205.0" layoutY="150.0" style="-fx-border-color: black;" text="Select new task ID">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <TextField fx:id="motPhraseTextField" layoutX="100.0" layoutY="530.0" prefHeight="40.0" prefWidth="400.0">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </TextField>
+        <Label alignment="CENTER" layoutX="52.0" layoutY="450.0" style="-fx-border-color: black;" text="Write a motivational phrase to your apprentice">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Button alignment="CENTER" layoutX="200.0" layoutY="600.0" mnemonicParsing="false" onAction="#submitMotPhrase" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green; -fx-border-color: black;" text="Submit">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+        <Button alignment="CENTER" layoutX="200.0" layoutY="300.0" mnemonicParsing="false" onAction="#submitTaskId" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green; -fx-border-color: black;" text="Submit">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+        <Line endX="600.0" endY="411.5" startX="-1.52587890625E-5" startY="411.5" />
+        <Line endX="600.0" endY="411.5" layoutY="-290.0" startX="-1.52587890625E-5" startY="411.5" />
+        <Line endX="600.0" endY="411.5" layoutY="270.0" startX="-1.52587890625E-5" startY="411.5" />
+    </children>
+</AnchorPane>

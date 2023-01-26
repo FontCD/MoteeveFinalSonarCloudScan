@@ -3,8 +3,10 @@ package logic.factory;
 import logic.model.Achievement;
 import logic.model.Task;
 
+import java.sql.SQLException;
+
 public class ObjectFactory {
-    public BaseObject createBaseObject(int id, String name, String script, String color,boolean status, int reward, String type) throws Exception {
+    public BaseObject createBaseObject(int id, String name, String script, String color,boolean status, int reward, String type) throws SQLException {
 
         switch (type) {
             case "Ach":
@@ -12,7 +14,7 @@ public class ObjectFactory {
             case "Task":
                 return new Task(id,name,script, color,status,reward) ;
             default:
-                throw new Exception("Type not found");
+                throw new SQLException("Type not found");
         }
     }
 }

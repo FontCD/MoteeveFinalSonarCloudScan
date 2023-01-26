@@ -1,6 +1,9 @@
 package logic.observer;
 
+
 import logic.factory.BaseObject;
+
+import javax.swing.*;
 
 public class AchievementObserver implements Observer {
 
@@ -12,11 +15,7 @@ public class AchievementObserver implements Observer {
 
     @Override
     public void update() {
-        if (ach.getStatus() && ach.getScript().equals("Completato")) {
-            System.out.println("Compliementi hai completato l'Achivevement " + ach.getName() + ", controlla negli sticker e vedrai di aver scbloccato un nuovo sticker");
-        } else if(ach.getStatus()){
-            System.out.println("Ehi, l'Achievevemt: " + this.ach.getName() + " è ora dipsonibile per essere sbloccato");
-        }
+        JOptionPane.showMessageDialog(null,"Complimenti hai completato l'Achievement: " + ach.getName() + "\n\nControlla nel profilo e vedrai un nuovo Sticker!" ,"MESSAGGIO DA MOTEEVE",JOptionPane.INFORMATION_MESSAGE);
     }
 }
 

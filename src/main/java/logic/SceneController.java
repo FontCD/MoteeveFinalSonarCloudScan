@@ -72,6 +72,12 @@ public class SceneController {
 
     //-----------------------------------------LABELS
     @FXML
+    private Label taskNotificationObserverLabel;
+
+    @FXML
+    private Label achNotificationObserverLabel;
+
+    @FXML
     private Label usernameLabel;
 
     @FXML
@@ -139,6 +145,12 @@ public class SceneController {
     private TextField usernameTextField;
 
     //---------------------------------------DIALOG PANES
+    @FXML
+    private DialogPane actorSelectionDialogPane;
+    @FXML
+    public static DialogPane taskNotificationObserverDialogPane;
+    @FXML
+    public static DialogPane achNotificationObserverDialogPane;
     @FXML
     private DialogPane noSlotSelectedDialogPane ;
 
@@ -285,6 +297,15 @@ public class SceneController {
                 }
             }
         }
+    }
+
+    @FXML
+    public void switchToCoachScene(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("coachScene.fxml")));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     //-------------TASK PAGE-----------------
@@ -503,7 +524,7 @@ public class SceneController {
         try{
             int index = achListView.getSelectionModel().getSelectedIndex();
             achIndex = achList.get(index).getId();
-            if(!achList.get(index).getScript().equals("Completato")) {
+            if(!achList.get(index).getScript().equals("Completato") && achList.get(index).getStatus() ) {
                 completeAchievementRewardLabel.setText("You will receive a new sticker");
                 completeAchievementDialogPane.setVisible(true);
             }
@@ -687,5 +708,15 @@ public class SceneController {
         }
         setAllDialogPanesInvisible();
     }
-
+//---------------POP UPS-------------
+    @FXML
+    public void taskObserverNotificationClose(){
+    }
+    @FXML
+    public void achObserverNotificationClose(){
+    }
+    private void taskObserverNotificationOpen() {
+        taskNotificationObserverDialogPane.setVisible(true);
+        taskNotificationObserverLabel.setText("ciao");
+    }
 }
