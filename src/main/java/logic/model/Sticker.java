@@ -1,13 +1,15 @@
 package logic.model;
 
+//ENTITY STICKER
+public class Sticker {
 
-public class Sticker {																			//Entity
-
+    //ATTRIBUTI
     private int id;
     private String name ;
     private String stickerurl;
     private boolean status ;
 
+    //COSTRUTTORE COMPLETO
     public Sticker (int id, String name, String stickerurl, boolean status) {
         this.id = id ;
         this.name = name;
@@ -15,6 +17,7 @@ public class Sticker {																			//Entity
         this.status = status ;
     }
 
+    //METODI ENTITY
     public int getId(){
         return this.id;
     }

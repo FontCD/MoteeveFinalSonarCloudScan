@@ -57,6 +57,7 @@ public class CLIUser {
         mainPage();
     }
 
+    //SETUP GENERALI
     private void setUpView() {
         setUpAchievements();
         setUpTasks();
@@ -64,24 +65,28 @@ public class CLIUser {
         setUpCard();
     }
 
+    //SETUP DELLA CARD
     private void setUpCard() {
         ViewCardController controller = new ViewCardController();
         ViewCardUserBean bean = controller.createCard();
         card = bean.getBean();
     }
 
+    //SETUP DELGI STICKERS
     private void setUpStickers() {
         ViewStickersController controller = new ViewStickersController();
         ViewStickerListBean bean = controller.createStkList();
         listStk = bean.getBean();
     }
 
+    //SETUP DELLE TASK
     private void setUpTasks() {
         ViewCurrentTaskController controller = new ViewCurrentTaskController();
         ViewCurrentTaskListBean bean = controller.createTskList();
         listTsk = bean.getBean();
     }
 
+    //SETUP DEGLI ACHIEVEMENTS
     private void setUpAchievements()  {
         ViewAchievementController controller = new ViewAchievementController();
         ViewAchievementListBean bean = controller.createAchList();
@@ -112,6 +117,7 @@ public class CLIUser {
         actionOnProfilePage();
     }
 
+    //STAMPA DELA PAGINA DELGI ACHIEVEMENTS
     private void achievementPage() throws IOException,SQLException {
         System.out.println("--------ACHIEVEMENTS--------");
         int i = 1;
@@ -127,6 +133,7 @@ public class CLIUser {
         actionOnAchievementPage();
     }
 
+    //STAMPA DELLA PAGINA DELLE TASK
     private void taskPage() throws IOException,SQLException {
         System.out.println("--------TASKS--------");
         int i = 1;
@@ -142,6 +149,7 @@ public class CLIUser {
         actionOnTaskPage();
     }
 
+    //STAMPA DELLA PAGINA ASK TO MOTEEVE
     private void askToMoteevePage() throws IOException,SQLException {
         System.out.println("--------ASK TO MOTEEVE--------");
         AskToMoteeveController controller = new AskToMoteeveController();
@@ -170,6 +178,7 @@ public class CLIUser {
 
     }
 
+    //STAMPA DEL DIVISORE DELLE PAGINE
     private void pageDivider(){
         System.out.println("\n\n\n\n");
         System.out.println("-------------------------------------------------------");
@@ -209,6 +218,7 @@ public class CLIUser {
 
     }
 
+    //AZIONE SU PAGINA DEGLI ACHIEVEMENTS
     private void actionOnAchievementPage() throws IOException,SQLException {
         System.out.println(INSERTMESSAGE);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -233,6 +243,7 @@ public class CLIUser {
         }
     }
 
+    //AZIONE SUL SOTTOMENU DEGLI ACHIEVEMENTS
     private void achievementSubMenu(int choose) throws IOException,SQLException {
         System.out.println(INSERTMESSAGE);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -258,6 +269,7 @@ public class CLIUser {
 
     }
 
+    //AZIONE SU PAGINA DELLE TASK
     private void actionOnTaskPage() throws IOException,SQLException {
         System.out.println(INSERTMESSAGE);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -300,6 +312,7 @@ public class CLIUser {
         }
     }
 
+    //AZIONE SULLA SOTTOPAGINA DELLE TASK
     private void taskSubMenu(int choose) throws IOException, SQLException {
         System.out.println(INSERTMESSAGE);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -341,7 +354,7 @@ public class CLIUser {
         }
     }
 
-    //DO AN ACTION ON THE PROFILE PAGE
+    //AZIONE SU PAGINA DEL PROFILO
     private void actionOnProfilePage() throws IOException,SQLException {
         System.out.println(INSERTMESSAGE);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

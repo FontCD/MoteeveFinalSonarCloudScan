@@ -6,7 +6,10 @@ import logic.factory.ObjectFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+//CONTROLLER A CUI E' AFFIDATO IL COMPITO DI CREARE UNA LISTA DI TASK CON LE INFORAMZIONI RECUPERATE COL DATABASE
 public class ViewTasksController {
+
+    //METODO CHE CREA UNA LISTA DI TASK CON LE INFORMAZIONI RECUPERATE DAL DATABASE
     public ViewTasksListBean createTskList() {
         List<BaseObject> listTsk = new ArrayList<>();
         TaskDAOJDBC dao = new TaskDAOJDBC();

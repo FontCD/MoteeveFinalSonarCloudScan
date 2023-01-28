@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Achievement implements BaseObject, Subject {																			//Entity
+//ENTITY ACHIEVEMENT
+public class Achievement implements BaseObject, Subject {
 
+    //ATTRIBUTI
     private List<Observer> achObservers = new ArrayList<>();
     private int achId;
     private String achName;
@@ -18,8 +20,8 @@ public class Achievement implements BaseObject, Subject {																			//En
     private boolean achStatus;
     private int achReward ;
 
-
-    public Achievement(int id, String name, String script, String color, boolean status, int reward) { 					//costruttore completo
+    //COSTRUTTORE COMPLETO
+    public Achievement(int id, String name, String script, String color, boolean status, int reward) {
         this.achId = id ;
         this.achName = name ;
         this.achScript = script ;
@@ -28,7 +30,7 @@ public class Achievement implements BaseObject, Subject {																			//En
         this.achReward = reward ;
     }
 
-
+    //METODI ENTITY
     @Override
     public int getId() {
         return this.achId;
@@ -59,13 +61,13 @@ public class Achievement implements BaseObject, Subject {																			//En
         return this.achReward ;
     }
 
-    //da eliminare, è un safe delete
-
     @Override
     public void setComplete() {
         this.achScript = "Completato";
         notifyObservers();
     }
+
+    //METODI DELL' OBSERVER
     @Override
     public void attach(Observer obs) {
         this.achObservers.add(obs) ;

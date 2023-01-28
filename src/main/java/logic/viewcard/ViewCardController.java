@@ -7,8 +7,10 @@ import logic.model.Sticker;
 
 import java.util.List;
 
+//CONTROLLER A CUI E' AFFIDATA LA GESTIONE DELLA VIEW DELLA CARD
 public class ViewCardController {
 
+    //CREAZIONE DI UNA CARD RECUPERANDO LE INFO DAL DATABASE
     public ViewCardUserBean createCard(){
         CardDAOJDBC dao = new CardDAOJDBC();
         CardFactory factory = new CardFactory();

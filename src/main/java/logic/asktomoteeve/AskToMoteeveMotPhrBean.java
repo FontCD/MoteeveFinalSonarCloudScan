@@ -2,11 +2,16 @@ package logic.asktomoteeve;
 
 import logic.exceptions.InvalidStringException;
 
-public class AskToMoteeveMotPhrBean {						//bean per il passaggio frase da stampare
 
+//BEAN PER IL PASSAGGIO DELLE FRASI MOTIVAZIONALI
+public class AskToMoteeveMotPhrBean {
+
+    //STRINGA CONTENENTE LA FRASE
     private String askToMoteevePhrase ;
 
-    public void setBean(String askToMoteevePhrase) throws InvalidStringException {					//setter
+    //SETTER DEL BEAN
+    public void setBean(String askToMoteevePhrase) throws InvalidStringException {
+        //CONTROLLO SULLA CORRETTEZZA DELLA STRINGA INSERITA
         if (askToMoteevePhrase.length() == 0 || askToMoteevePhrase.length() >= 500){
             throw new InvalidStringException();
         } else {
@@ -14,6 +19,7 @@ public class AskToMoteeveMotPhrBean {						//bean per il passaggio frase da stam
         }
     }
 
+    //METODO GET PER IL BEAN
     public String getBean() {								//getter
         return this.askToMoteevePhrase ;
     }

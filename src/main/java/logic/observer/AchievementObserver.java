@@ -6,14 +6,17 @@ import logic.factory.BaseObject;
 
 import javax.swing.*;
 
+//OBSERVER RELATIVO AGLI ACHIEVEMENTS
 public class AchievementObserver implements Observer {
 
+    //ATTRIBUTI
     BaseObject ach;
 
     public AchievementObserver(BaseObject ach) {
         this.ach = ach;
     }
 
+    //METODO OBSERVER
     @Override
     public void update() {
         if (Main.view.equals("CLI")){

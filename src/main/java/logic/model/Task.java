@@ -7,9 +7,10 @@ import logic.observer.Subject;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
+//ENTITY TASK
 public class Task implements BaseObject, Subject {
 
+    //ATTRIBUTI
     private List<Observer> observers = new ArrayList<>();
     private int id;
     private String name;
@@ -18,7 +19,7 @@ public class Task implements BaseObject, Subject {
     private boolean status;
     private int reward ;
 
-
+    //COSTRUTTORE COMPLETO
     public Task (int id, String name, String script, String color,boolean status, int reward) { 	//costruttore completo
         this.id = id;
         this.name = name ;
@@ -29,6 +30,7 @@ public class Task implements BaseObject, Subject {
 
     }
 
+    //METODI ENTITY
     @Override
     public int getId() {
         return id;
@@ -65,10 +67,7 @@ public class Task implements BaseObject, Subject {
         notifyObservers();
     }
 
-
-    //da eliminare (nessun effetto collatelare)
-
-
+    //METODI OBSERVER
     @Override
     public void attach(Observer obs) {
         this.observers.add(obs) ;

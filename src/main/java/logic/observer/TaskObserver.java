@@ -5,6 +5,7 @@ import logic.factory.BaseObject;
 
 import javax.swing.*;
 
+//OBSERVER RELATIVO ALLE TASK
 public class TaskObserver implements Observer {
     BaseObject tsk;
 
@@ -12,6 +13,7 @@ public class TaskObserver implements Observer {
         this.tsk = tsk;
     }
 
+    //METODI OBSERVER
     @Override
     public void update() {
         if(Main.view.equals("CLI")){

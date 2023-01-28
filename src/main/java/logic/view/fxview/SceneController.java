@@ -52,9 +52,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
+//CONTROLLER DI TUTTA LE SCENE (GUI)
 public class SceneController {
 
+    //INIZIALIZZAZIONE DELLE SCENE E DELLE INFORMAZIONI DI SETUP PER LA GUI
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -68,7 +69,7 @@ public class SceneController {
     public String color = "-fx-background-color: ";
 
 
-    //-----------------------------------------BUTTONS
+    //BOTTONI
     @FXML
     private Button dailyTask1;
     @FXML
@@ -82,33 +83,21 @@ public class SceneController {
     @FXML
     private Button weeklyTask2;
 
-    //setText,setColo,setStyle,completeAchiementTry
-
-    //-----------------------------------------LABELS
+    //LABEL
     @FXML
     private Label askToMoteeveLabel;
     @FXML
-    private Label taskNotificationObserverLabel;
-
-    @FXML
-    private Label achNotificationObserverLabel;
-
-    @FXML
     private Label usernameLabel;
-
     @FXML
     private Label levelLabel;
-
     @FXML
     private Label experienceLabel;
-
     @FXML
     private Label completeTaskRewardLabel;
-
     @FXML
     private Label completeAchievementRewardLabel;
 
-    //---------------------------------------IMAGE VIEWS
+    //IMAGE VIEWS
     @FXML
     private ImageView cardView;
 
@@ -140,7 +129,7 @@ public class SceneController {
     private ImageView slot8;
     @FXML
     private final List<ImageView> slotImage = new ArrayList<>();
-    //---------------------------------------LIST VIEWS
+    //LIST VIEWS
     @FXML
     private ListView<String> availableStickersListView;
 
@@ -155,11 +144,11 @@ public class SceneController {
     private ListView<String> achListView;
 
 
-    //---------------------------------------TEXT FIELDS
+    //TEXTFIELDS
     @FXML
     private TextField usernameTextField;
 
-    //---------------------------------------DIALOG PANES
+    //DIALOGPANES
     @FXML
     private DialogPane actorSelectionDialogPane;
     @FXML
@@ -197,14 +186,13 @@ public class SceneController {
     @FXML
     private DialogPane noSlotSelected;
 
-    //------------------------------------------------------STARTING SETUP
+    //SETUP VARI
     public static void setUp() {
         setAchievementLIst();
         setTaskList();
         setStickerList();
         setCard();
     }
-
     public void setUpSlotList() {
         slotList.add("Slot1");
         slotList.add("Slot2");
@@ -216,7 +204,6 @@ public class SceneController {
         slotList.add("Slot8");
         slotList.add("Remove all stickers");
     }
-
     public void setUpSlotImage() {
         slotImage.add(slot1);
         slotImage.add(slot2);
@@ -250,7 +237,7 @@ public class SceneController {
 
 
 
-    //-----------------------------------------------------MANAGEMENT
+    //FACILITY PER GESTIRE L' INTERFACCIA
     public void setAllDialogPanesInvisible() {
 
         noStickerSelectedDialogPane.setVisible(false);
@@ -263,7 +250,8 @@ public class SceneController {
 
     }
 
-    //-----------------------------------------------------STAGE SWITCH
+    //STAGE SWITCH
+    //SWITCH ALLA SCENA DEL PROFILO
     @FXML
     public void switchToProfileScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("profileScene.fxml")));
@@ -273,6 +261,7 @@ public class SceneController {
         stage.show();
     }
 
+    //SWITCH ALLA SCENA DELLE TASK
     @FXML
     public void switchToMainScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("mainScene.fxml")));
@@ -282,6 +271,7 @@ public class SceneController {
         stage.show();
     }
 
+    //SQITCH ALLA SCENA DELGI ACHEIVEMENTS
     @FXML
     public void switchToAchievementScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("achievementScene.fxml")));
@@ -291,6 +281,7 @@ public class SceneController {
         stage.show();
     }
 
+    //RIMUOVE DALLO SCHERMO IL MESSAGGIO ALL' APERTURA DEL PROFILO
     @FXML
     public void putOffStartingMessage(){
 
@@ -322,6 +313,7 @@ public class SceneController {
         startingMessageDialogPane.setVisible(false);
     }
 
+    //RICARICA GLI ACHIEVEMENTS
     @FXML
     public void refreshAchievementPage(){
         if (!completeAchievementDialogPane.isVisible()) {
@@ -334,6 +326,7 @@ public class SceneController {
         }
     }
 
+    //SWITCH ALLA SCENA DEL COACH
     @FXML
     public void switchToCoachScene(ActionEvent event) throws IOException{
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("coachScene.fxml")));
@@ -343,8 +336,7 @@ public class SceneController {
         stage.show();
     }
 
-    //-------------TASK PAGE-----------------
-
+    //RICARICA LE TASK
     @FXML
     public void refreshTaskPage() {
         int i = 1;
@@ -353,6 +345,8 @@ public class SceneController {
             i = i + 1;
         }
     }
+
+    //STAMPA DELLE TASK E RISPETTIVE INFO SULLA PAGINA MAIN
     public void showTask(String index){
         String message = "NESSUNA TASK PRESENTE, CHIEDI A MOTEEVE DI DARTENE UNA NUOVA!";
         String baseColor = "-fx-background-color: white";
@@ -431,7 +425,7 @@ public class SceneController {
         }
 
     }
-    //-------------------------------------------------CHANGE USERNAME
+    //CHANGE USERNAME USE CASE
     @FXML
     public void changeUsernameTry() {
         setAllDialogPanesInvisible();
@@ -461,7 +455,7 @@ public class SceneController {
         changeUsernameDialogPane.setVisible(false);
     }
 
-    //-----------------------------------------------------ASK MOTEEVE
+    //ASK MOTEEVE USE CASE
     @FXML
     public void askMoteeveTry() {
         setAllDialogPanesInvisible();
@@ -490,7 +484,7 @@ public class SceneController {
         askMoteeveDialogPane.setVisible(false);
     }
 
-    //------------------------------------------------------LOGOUT
+    //LOGOUT
     @FXML
     public void logoutTry() {
         setAllDialogPanesInvisible();
@@ -508,7 +502,7 @@ public class SceneController {
         System.exit(0);
     }
 
-    //------------------------------------------------------COMPLETE TASK
+    //COMPLETE TASK USE CASE
 
     private int tskIndex;
     private String startingMessage = "Rewards: ";
@@ -568,6 +562,7 @@ public class SceneController {
         completeTaskDialogPane.setVisible(false);
     }
 
+    //CHANGE TASK USE CASE
     @FXML
     public void changeTask() throws NoChangeException {
 
@@ -586,6 +581,7 @@ public class SceneController {
 
     }
 
+    //COMPLETE TASK USE CASE
     @FXML
     public void completeTaskSuccess() {
             CompleteTaskController controller = new CompleteTaskController();
@@ -606,8 +602,7 @@ public class SceneController {
             completeTaskDialogPane.setVisible(false);
     }
 
-    //-----------------------------------------------------COMPLETE ACHIEVEMENTS
-
+    //COMPLETE ACHIEVEMENTS USE CASE
     private int achIndex;
     @FXML
     public void completeAchievementTry() {
@@ -644,7 +639,7 @@ public class SceneController {
         completeAchievementDialogPane.setVisible(false);
     }
 
-    //------------------------------------------------CUSTOMIZE PROFILE
+    //PROFILE CUSTOMIZATION
     @FXML
     public void customizeProfileTry() {
         setAllDialogPanesInvisible();
@@ -683,6 +678,7 @@ public class SceneController {
 
     }
 
+    //ADD STICKER TO CARD
     @FXML
     public void addStickersToCardTry() {
 

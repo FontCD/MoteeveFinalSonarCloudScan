@@ -11,14 +11,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+//DAO RELATIVO ALLA GESTIONE DELL INFORMAZIONI SU DB DELLA CARD
 public class CardDAOJDBC {
 
+    //STABILISCO LA CONNESSIONE COL DB
     private final Connection conn = Connectivity.getConn();                                                                                                                                    //dalla classe connectivity prendo la connessione
     PreparedStatement stmt = null;
 
+    //METODO PER ESTRARRE LO USERNAME DELL' UTENTE
     public String extractName() {
         String name = "";
-
+        //QUERY SQL
         try {
             stmt = conn.prepareStatement("SELECT UserName FROM card", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery();
@@ -32,12 +35,14 @@ public class CardDAOJDBC {
             Connectivity.close(stmt);
         }
 
+        //RITORNA LO USERNAME
         return name;
     }
 
+    //METODO PER ESTRARRE L' ESPERIENZA CORRENTE
     public int extractExp()  {
         int exp = 0;
-
+        //QUERY SQL
         try {
             stmt = conn.prepareStatement("SELECT totalExp FROM card", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery();
@@ -50,13 +55,14 @@ public class CardDAOJDBC {
         } finally {
             Connectivity.close(stmt);
         }
-
+        //RITORNA L' ESPERIENZA CORRENTE
         return exp;
     }
 
+    //METODO PER ESTRARRE DAL DB IL LIVELLO CORRENTE
     public int extractLevel() {
         int level = 0;
-
+        //QUERY SQL
         try{
             stmt = conn.prepareStatement("SELECT level FROM card", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery();
@@ -69,11 +75,14 @@ public class CardDAOJDBC {
         } finally {
             Connectivity.close(stmt);
         }
+        //RITORNA IL LIVELLO CORRENTE
         return level;
     }
 
+    //METODO PER ESTRARRE DAL DB IL NUMERO DI CAMBI CORRENTI DELL' UTENTE
     public int extractChanges()  {
         int changes = 0;
+        //QUERY SQL
         try {
             stmt = conn.prepareStatement("SELECT availableChanges FROM card", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery();
@@ -86,13 +95,14 @@ public class CardDAOJDBC {
         } finally {
             Connectivity.close(stmt);
         }
-
+        //RITORNA IL NUMERO CORRENTE DI CAMBIAMENTI
         return changes;
     }
 
+    //METODO PER ESTRARRE DAL DB L' URL DELL' IMMAGINE DI PROFILO CORRENTE
     public String extractProfileImage() {
         String profileImage = "";
-
+        //QUERY SQL
         try{
             stmt = conn.prepareStatement("SELECT profileImage FROM card", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery();
@@ -105,21 +115,22 @@ public class CardDAOJDBC {
         } finally {
             Connectivity.close(stmt);
         }
-            return profileImage;
-        }
+        //VIENE RITORNATO L'URL
+        return profileImage;
+    }
 
+    //MEOTODO PER RECUPERARE TUTTI GLI STICKER
     public List<Sticker> extractSlots() {
+        //INFORMAZIONI NECESSARIE PER LA QUERY
         List<Sticker> slots = new ArrayList<>();
-
         StickerFactory factory = new StickerFactory();
-
 
         String forQueryIdSticker = "idSticker";
         String forQueryStickerUrl = "StickerUrl";
         String forQueryStatus = "Status";
 
         ResultSet rs;
-
+        //QUERY SQL
         try{
             stmt = conn.prepareStatement("SELECT idSticker,Name,StickerURL,Status FROM card JOIN sticker WHERE slot1 = idSticker", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = stmt.executeQuery() ;
@@ -239,12 +250,13 @@ public class CardDAOJDBC {
             Connectivity.close(stmt);
         }
 
+        //RITORNA LO STATUS DI TUTTI 8 GLI SLOT, SE ALL' INTERO DI ESSI ERANO STATI INSERITI DEGLI STICKER DALL' UTENTE
         return slots;
     }
 
-
+    //METODO CHE DIMINUISCE IL NUMERO DI ELLE RICHIESTE DI CAMBI DI TASK RIMANENTI DA PARTE DELL' UTENTE
     public void decreaseChanges()  {
-
+        //QUERY SQL
         try {
             stmt = conn.prepareStatement("SELECT availableChanges FROM card", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY );
             ResultSet rs = stmt.executeQuery() ;
@@ -266,11 +278,13 @@ public class CardDAOJDBC {
         }
     }
 
+    //METODO PER AGGIORNARE L' ESPERIENZA DELL' UTENTE IN SEGUITO AD UN RICEVIMENTO DI RICOMPENSA PER TASK COMPLETATA
     public void addExp(int exp)  {
 
         int currentEXP;
         int newEXP;
 
+        //QUERY SQL
         try {
             stmt = conn.prepareStatement("SELECT * FROM Card",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = stmt.executeQuery() ;
@@ -292,7 +306,9 @@ public class CardDAOJDBC {
         }
     }
 
+    //METODO PER AGGIORNARE IL NOME DELL' UTENTE SULLA CARD
     public void replaceName(String newName) throws SQLException {
+        //QUERY SQL
         try {
             stmt = conn.prepareStatement("UPDATE `card` SET `Username` = '" + newName + "'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             stmt.executeUpdate();

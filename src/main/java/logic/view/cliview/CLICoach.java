@@ -32,6 +32,7 @@ public class CLICoach {
         mainPage();
     }
 
+    //SETUP DELLE PAGINE
     private void setUpView() {
         ViewTasksController controller = new ViewTasksController();
         ViewTasksListBean bean = controller.createTskList();
@@ -39,7 +40,7 @@ public class CLICoach {
     }
 
     //-----------PAGES----------------------
-
+    //STAMPA LA PAGINA PRINCIPALE
     private void mainPage() throws IOException, SQLException {
         System.out.println("\n\n");
         System.out.println("-----------------------MOTEEVE------------------------");
@@ -82,6 +83,8 @@ public class CLICoach {
             }
         }
     }
+
+    //DIVISORE (PER CREARE ORDINE NELL' INTERFACCIA CLI)
     private void pageDivider() {
         System.out.println("\n\n\n\n");
         System.out.println("-------------------------------------------------------");
@@ -90,6 +93,7 @@ public class CLICoach {
 
 
     //-----------ACTIONONPAGES----------------
+    //INPUT SULLA PAGINA PRINCIPALE
     private void actionOnMainPage() throws IOException, SQLException {
         System.out.println("\n\nInsert a number:");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -113,6 +117,7 @@ public class CLICoach {
 
     }
 
+    //INPUT SULLA PAGINA DI RICHIESTA PER FRASI MOTIVAZIONALI
     public void actionOnMotivationalPhrasePage() throws IOException, SQLException {
         AskToMoteeveController controller = new AskToMoteeveController();
 
@@ -135,7 +140,7 @@ public class CLICoach {
         mainPage();
     }
 
-
+    //STAMPA LA PAGINA PER CAMBIARE TASK
     private void actionOnChangeTaskPage() throws IOException, SQLException {
         System.out.println("\n\nInsert a number");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -156,6 +161,7 @@ public class CLICoach {
             mainPage();
     }
 
+    //STAMPA LA PAGINA PER CAMBIARE TASK
     private void changeTaskPage() throws IOException, SQLException {
         System.out.println("-----------------------CAMBIA LA TASK------------------------");
         ChangeTaskController controller = new ChangeTaskController();

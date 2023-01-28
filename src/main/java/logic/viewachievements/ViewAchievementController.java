@@ -7,8 +7,10 @@ import logic.observer.AchievementObserver;
 import java.util.ArrayList;
 import java.util.List;
 
+//CONTROLLER DELLA VIEW DEGLI ACHIEVEMENTS
 public class ViewAchievementController {
 
+    //CREAZIONE DI UNA LISTA DI ACHIEVEMENTS (RECUPERATI DAL DB)
     public ViewAchievementListBean createAchList() {
         int achInd = 1;
         int maxAch = 11;

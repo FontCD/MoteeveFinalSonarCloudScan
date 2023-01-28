@@ -55,6 +55,7 @@ public class SceneControllerCoach {
 
     }
 
+    //INVIA UNA FRASE MOTIVAZIONALE ALL' APPRENDISTA
     @FXML
     public void submitMotPhrase() {
         AskToMoteeveController controller = new AskToMoteeveController();

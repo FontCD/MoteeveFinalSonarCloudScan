@@ -7,8 +7,10 @@ import logic.observer.TaskObserver;
 import java.util.ArrayList;
 import java.util.List;
 
+//CONTROLLER A CUI E' AFFIDATA LA CREAZIONE DELLA LISTA DI TASK RECUPERATE DAL DATABASE
 public class ViewCurrentTaskController {
 
+    //METODO PER CREARE LA LISTA DI TASK RECUPERATE DAL DATABASE
     public ViewCurrentTaskListBean createTskList() {
         int tskInd = 1;
         int maxTsk = 6;

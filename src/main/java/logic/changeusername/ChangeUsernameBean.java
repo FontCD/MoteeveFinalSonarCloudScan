@@ -1,12 +1,12 @@
 package logic.changeusername;
 
-//BEAN THAT CONTAINS THE INFORMATION INVOLVED IN THE PROCESS OF CHANGING USERNAME
+//BEAN CONTENENETE TUTTE LE INFORMAZIONI RELATIVE AL CAMBIO DI USERNAME
 public class ChangeUsernameBean {
-    //BUFFERS THAT WILL CONTAIN THE OLD USERNAME AND THE NEW USERNAME
+    //ATTRIBUTI
     private String oldName;
     private String newName;
 
-    //BEAN METHODS
+    //METODI
     public String getOldName() {
         return this.oldName;
     }

@@ -8,8 +8,10 @@ import logic.model.Sticker;
 import java.util.ArrayList;
 import java.util.List;
 
+//CONTROLLER A CUI E' AFFIDATA LA CREAZIONE DI UNA LISAT DIS TICKER
 public class ViewStickersController {
 
+    //METODO PER CREARE UNA LISTA DI STICKER CON I DATI RECUPERATI DAL DATABASE
     public  ViewStickerListBean createStkList() {
         int stkInd = 1 ;
         int maxSticker = 11;

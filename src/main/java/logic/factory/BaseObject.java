@@ -3,9 +3,10 @@ package logic.factory;
 import logic.observer.Subject;
 
 
-
+//BASE OBJECT DEL METODO FACTORY
 public interface BaseObject extends Subject {
 
+    //METODI
     int getId() ;
 
     String getName() ;

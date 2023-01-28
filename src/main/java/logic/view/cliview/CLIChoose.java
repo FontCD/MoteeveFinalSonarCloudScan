@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 
 public class CLIChoose {
+
+    //SETUP DELLA PRIMA PAGINA
     public void firstPage() throws IOException, SQLException {
         System.out.println("\n\n");
         System.out.println("-----------------------MOTEEVE------------------------");
@@ -13,6 +15,7 @@ public class CLIChoose {
         actionOnFirstPage();
     }
 
+    //INPUT SULLA PRIMA PAGINA
     private void actionOnFirstPage() throws IOException, SQLException {
         System.out.println("\n\nInsert a number:");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

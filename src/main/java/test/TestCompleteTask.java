@@ -4,7 +4,6 @@ import logic.Connectivity;
 import logic.completetask.CompleteTaskController;
 import logic.completetask.CompleteTaskTaskBean;
 import logic.factory.BaseObject;
-import logic.factory.CardFactory;
 import logic.factory.ObjectFactory;
 
 import java.io.IOException;
