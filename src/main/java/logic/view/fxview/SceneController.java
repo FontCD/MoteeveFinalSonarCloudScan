@@ -633,7 +633,7 @@ public class SceneController {
                 completeAchievementDialogPane.setVisible(true);
             }
         }catch(IndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(null, "Per favore, selezionare un achievement", "Attenzione", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Per favore, selezionare un achievement", "Nessun achievement selezionato", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -724,7 +724,7 @@ public class SceneController {
             finalUrl = stkList.get(index).getStickerUrl();
             selectSlotTry();
         }catch(IndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(null, "Per favore, selezionare uno sticker", "Attenzione", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Per favore, selezionare uno sticker", "Nessuno sticker selezionato", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -755,7 +755,7 @@ public class SceneController {
             String mySlot = slotList.get(index);
             applicateStickerToSlot(mySlot, finalUrl);
         }catch(IndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(null, "Per favore, selezionare uno slot", "Attenzione", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Per favore, selezionare uno slot", "Nessuno slot selezionato", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     @FXML
