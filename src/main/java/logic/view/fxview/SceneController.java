@@ -65,7 +65,6 @@ public class SceneController {
     private static List<Sticker> stkList;
 
     private static Card card;
-    public String color = "-fx-background-color: ";
 
 
     //-----------------------------------------BUTTONS
@@ -353,84 +352,100 @@ public class SceneController {
             i = i + 1;
         }
     }
-    public void showTask(String index){
-        String message = "NESSUNA TASK PRESENTE, CHIEDI A MOTEEVE DI DARTENE UNA NUOVA!";
-        String baseColor = "-fx-background-color: white";
 
-
+    private String message = "NESSUNA TASK PRESENTE, CHIEDI A MOTEEVE DI DARTENE UNA NUOVA!";
+    private String baseColor = "-fx-background-color: white";
+    private String color = "-fx-background-color: ";
+    public void showTask(String index) {
         switch (index) {
 
             case "Task1":
-
-                if (tskList.get(0).getStatus()) {
-                    dailyTask1.setText(message);
-                    dailyTask1.setStyle(baseColor);
-
-                } else {
-                    dailyTask1.setText(tskList.get(0).getScript());
-                    dailyTask1.setStyle(color + tskList.get(0).getColor());
-                }
+                actionOnTask1();
                 break;
 
             case "Task2":
-
-                if (tskList.get(1).getStatus()) {
-                    dailyTask2.setText(message);
-                    dailyTask2.setStyle(baseColor);
-                } else {
-                    dailyTask2.setText(tskList.get(1).getScript());
-                    dailyTask2.setStyle(color + tskList.get(1).getColor());
-                }
+                actionOnTask2();
                 break;
 
             case "Task3":
-
-                if (tskList.get(2).getStatus()) {
-                    dailyTask3.setText(message);
-                    dailyTask3.setStyle(baseColor);
-                } else {
-                    dailyTask3.setText(tskList.get(2).getScript());
-                    dailyTask3.setStyle(color + tskList.get(2).getColor());
-                }
+                actionOnTask3();
                 break;
 
             case "Task4":
-
-                if (tskList.get(3).getStatus()) {
-                    dailyTask4.setText(message);
-                    dailyTask4.setStyle(baseColor);
-                } else {
-                    dailyTask4.setText(tskList.get(3).getScript());
-                    dailyTask4.setStyle(color + tskList.get(3).getColor());
-                }
+                actionOnTask4();
                 break;
 
             case "Task5":
-
-                if (tskList.get(4).getStatus()) {
-                    weeklyTask1.setText(message);
-                    weeklyTask1.setStyle(baseColor);
-                } else {
-                    weeklyTask1.setText(tskList.get(4).getScript());
-                    weeklyTask1.setStyle(color + tskList.get(4).getColor());
-                }
+                actionOnTask5();
                 break;
 
             case "Task6":
-
-                if (tskList.get(5).getStatus()) {
-                    weeklyTask2.setText(message);
-                    weeklyTask2.setStyle(baseColor);
-                } else {
-                    weeklyTask2.setText(tskList.get(5).getScript());
-                    weeklyTask2.setStyle(color + tskList.get(5).getColor());
-                }
+                actionOnTask6();
                 break;
 
-            default : break;
+            default:
+                break;
+        }
+    }
+
+        private void actionOnTask1(){
+            if (tskList.get(0).getStatus()) {
+                dailyTask1.setText(message);
+                dailyTask1.setStyle(baseColor);
+
+            } else {
+                dailyTask1.setText(tskList.get(0).getScript());
+                dailyTask1.setStyle(color + tskList.get(0).getColor());
+            }
         }
 
-    }
+        private void actionOnTask2(){
+            if (tskList.get(1).getStatus()) {
+                dailyTask2.setText(message);
+                dailyTask2.setStyle(baseColor);
+            } else {
+                dailyTask2.setText(tskList.get(1).getScript());
+                dailyTask2.setStyle(color + tskList.get(1).getColor());
+            }
+        }
+
+        private void actionOnTask3(){
+            if (tskList.get(2).getStatus()) {
+                dailyTask3.setText(message);
+                dailyTask3.setStyle(baseColor);
+            } else {
+                dailyTask3.setText(tskList.get(2).getScript());
+                dailyTask3.setStyle(color + tskList.get(2).getColor());
+            }
+        }
+        private void actionOnTask4(){
+            if (tskList.get(3).getStatus()) {
+                dailyTask4.setText(message);
+                dailyTask4.setStyle(baseColor);
+            } else {
+                dailyTask4.setText(tskList.get(3).getScript());
+                dailyTask4.setStyle(color + tskList.get(3).getColor());
+            }
+        }
+        private void actionOnTask5(){
+            if (tskList.get(4).getStatus()) {
+                weeklyTask1.setText(message);
+                weeklyTask1.setStyle(baseColor);
+            } else {
+                weeklyTask1.setText(tskList.get(4).getScript());
+                weeklyTask1.setStyle(color + tskList.get(4).getColor());
+            }
+        }
+        private void actionOnTask6(){
+            if (tskList.get(5).getStatus()) {
+                weeklyTask2.setText(message);
+                weeklyTask2.setStyle(baseColor);
+            } else {
+                weeklyTask2.setText(tskList.get(5).getScript());
+                weeklyTask2.setStyle(color + tskList.get(5).getColor());
+            }
+        }
+
     //-------------------------------------------------CHANGE USERNAME
     @FXML
     public void changeUsernameTry() {
@@ -569,7 +584,7 @@ public class SceneController {
     }
 
     @FXML
-    public void changeTask() throws NoChangeException {
+    public void changeTask() {
 
         ChangeTaskController controller = new ChangeTaskController();
 
@@ -630,7 +645,7 @@ public class SceneController {
     }
 
     @FXML
-    public void completeAchievementSuccess() throws Exception {
+    public void completeAchievementSuccess() {
 
         CompleteAchievementAchievementBean bean1 = new CompleteAchievementAchievementBean() ;
         bean1.setBean(achList.get(achIndex-1));
@@ -780,6 +795,7 @@ public class SceneController {
             case "Slot8":
                 slot8.setImage(stickerToAdd);
                 break;
+
             case "Remove all stickers":
                 slot1.setImage(null);
                 slot2.setImage(null);
@@ -790,9 +806,7 @@ public class SceneController {
                 slot7.setImage(null);
                 slot8.setImage(null);
                 break;
-            default :
-                System.out.println("Error");
-                break;
+            default: break;
         }
         setAllDialogPanesInvisible();
     }
