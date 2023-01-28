@@ -25,7 +25,6 @@ public class TestCompleteTask {
 
 
         tskBean.setBean(tsk);
-        controller.endTask(tskBean,);
 
     }
 
