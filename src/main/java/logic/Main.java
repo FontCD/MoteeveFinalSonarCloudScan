@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class Main extends Application {
-    public static String view = "FX";
+    public final static String view = "FX";
     public static void main(String[] args) throws SQLException, IOException {
         if(view.equals("CLI")){
             CLIChoose cli = new CLIChoose();
