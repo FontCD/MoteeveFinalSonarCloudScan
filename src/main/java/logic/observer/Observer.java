@@ -1,6 +1,6 @@
 package logic.observer;
 
-//OBSERVER
+//IMPLEMENTAZIONE DELL' INTERFACCIA OBSERVER
 public interface Observer {
     void update();
 }
