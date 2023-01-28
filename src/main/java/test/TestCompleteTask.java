@@ -6,7 +6,6 @@ import logic.completetask.CompleteTaskIdCurrentBean;
 import logic.completetask.CompleteTaskTaskBean;
 import logic.completetask.CompleteTaskUserBean;
 import logic.factory.BaseObject;
-import logic.factory.CardFactory;
 import logic.factory.ObjectFactory;
 import logic.model.Card;
 import logic.viewcard.ViewCardController;

@@ -65,7 +65,6 @@ public class SceneController {
     private static List<Sticker> stkList;
 
     private static Card card;
-    public String color = "-fx-background-color: ";
 
 
     //-----------------------------------------BUTTONS
@@ -358,6 +357,7 @@ public class SceneController {
         String baseColor = "-fx-background-color: white";
 
 
+        String color = "-fx-background-color: ";
         switch (index) {
 
             case "Task1":
@@ -780,7 +780,7 @@ public class SceneController {
             case "Slot8":
                 slot8.setImage(stickerToAdd);
                 break;
-            case "Remove all stickers":
+            default:
                 slot1.setImage(null);
                 slot2.setImage(null);
                 slot3.setImage(null);
@@ -789,9 +789,6 @@ public class SceneController {
                 slot6.setImage(null);
                 slot7.setImage(null);
                 slot8.setImage(null);
-                break;
-            default :
-                System.out.println("Error");
                 break;
         }
         setAllDialogPanesInvisible();

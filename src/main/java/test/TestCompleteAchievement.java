@@ -12,11 +12,9 @@ import logic.viewstickers.ViewStickersController;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class TestCompleteAchievement {
 
@@ -26,20 +24,20 @@ public class TestCompleteAchievement {
     public void testCompleteAchievement() throws SQLException, IOException {
         Connectivity.setConnection();
 
-        ObjectFactory factory = new ObjectFactory();
-        BaseObject ach = factory.createBaseObject(1,"Benvenuto",  "Utilizza Moteeve per la prima volta", "gray", true, 1,"Ach");
+        ObjectFactory objectFactory = new ObjectFactory();
+        BaseObject ach = objectFactory.createBaseObject(1,"Benvenuto",  "Utilizza Moteeve per la prima volta", "gray", true, 1,"Ach");
 
-        CompleteAchievementController controller = new CompleteAchievementController();
+        CompleteAchievementController completeAchievementController = new CompleteAchievementController();
         CompleteAchievementAchievementBean bean = new CompleteAchievementAchievementBean();
         bean.setBean(ach);
 
-        ViewStickersController controller2 = new ViewStickersController();
-        ViewStickerListBean listBean = controller2.createStkList();
+        ViewStickersController viewStickersController = new ViewStickersController();
+        ViewStickerListBean listBean = viewStickersController.createStkList();
 
         CompleteAchievementStickerListBean listBeanForTest = new CompleteAchievementStickerListBean();
         listBeanForTest.setBean(listBean.getBean());
 
-        controller.unlockAchievement(bean,listBeanForTest);
+        completeAchievementController.unlockAchievement(bean,listBeanForTest);
         assertEquals("Completato", ach.getScript());
     }
 }
