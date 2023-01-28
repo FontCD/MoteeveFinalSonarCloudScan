@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #87BEEC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #87BEEC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.fxview.SceneController">
     <Button layoutX="51.0" layoutY="320.0" mnemonicParsing="false" onAction="#customizeProfileTry" prefHeight="100.0" prefWidth="500.0" text="Customize card" />
     <Button layoutX="50.0" layoutY="450.0" mnemonicParsing="false" onAction="#changeUsernameTry" prefHeight="50.0" prefWidth="500.0" text="Change username" />
     <Button layoutX="50.0" layoutY="530.0" mnemonicParsing="false" onAction="#askMoteeveTry" prefHeight="50.0" prefWidth="500.0" text="AskMoteeve" />

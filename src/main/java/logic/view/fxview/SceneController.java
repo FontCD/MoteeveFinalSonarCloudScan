@@ -1,4 +1,4 @@
-package logic.view;
+package logic.view.fxview;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -12,9 +12,16 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
+import logic.Connectivity;
 import logic.asktomoteeve.AskToMoteeveBooleanBean;
 import logic.asktomoteeve.AskToMoteeveController;
 import logic.asktomoteeve.AskToMoteeveMotPhrBean;
+import logic.changetask.ChangeTaskCardBean;
+import logic.changetask.ChangeTaskController;
+import logic.changetask.ChangeTaskIdBean;
+import logic.changeusername.ChangeUsernameBean;
+import logic.changeusername.ChangeUsernameCardBean;
+import logic.changeusername.ChangeUsernameController;
 import logic.completeachievement.CompleteAchievementAchievementBean;
 import logic.completeachievement.CompleteAchievementController;
 import logic.completeachievement.CompleteAchievementStickerListBean;
@@ -23,6 +30,7 @@ import logic.completetask.CompleteTaskIdCurrentBean;
 import logic.completetask.CompleteTaskTaskBean;
 import logic.completetask.CompleteTaskUserBean;
 import logic.exceptions.InvalidStringException;
+import logic.exceptions.NoChangeException;
 import logic.factory.BaseObject;
 import logic.model.Card;
 import logic.model.Sticker;
@@ -37,6 +45,7 @@ import logic.viewcard.ViewCardUserBean;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -404,9 +413,20 @@ public class SceneController {
     }
 
     @FXML
-    public void changeUsernameSuccess(){
+    public void changeUsernameSuccess() throws SQLException {
         String username = usernameTextField.getText();
-        //qui una volta c era il caso d uso di federico RIP
+        ChangeUsernameController controller = new ChangeUsernameController();
+
+        ChangeUsernameBean bean = new ChangeUsernameBean();
+        bean.setNewName(username);
+
+        ChangeUsernameCardBean cardBean = new ChangeUsernameCardBean();
+        cardBean.setBean(card);
+
+        controller.setNewUsername(bean,cardBean);
+
+        usernameLabel.setText(card.getUserName());
+
         changeUsernameDialogPane.setVisible(false);
     }
 
@@ -453,6 +473,7 @@ public class SceneController {
 
     @FXML
     public void logoutSuccess() {
+        Connectivity.disconnect(Connectivity.getConn());
         System.exit(0);
     }
 
@@ -514,6 +535,21 @@ public class SceneController {
     @FXML
     public void completeTaskFail() {
         completeTaskDialogPane.setVisible(false);
+    }
+
+    @FXML
+    public void changeTask() throws NoChangeException {
+
+
+        ChangeTaskController controller = new ChangeTaskController();
+
+        ChangeTaskCardBean cardBean = new ChangeTaskCardBean();
+        cardBean.setBean(card);
+        ChangeTaskIdBean idBean = new ChangeTaskIdBean();
+        idBean.setBean(tskIndex);
+
+        controller.askForAChange(cardBean,idBean);
+
     }
 
     @FXML

@@ -292,4 +292,12 @@ public class CardDAOJDBC {
         }
     }
 
+    public void replaceName(String newName) throws SQLException {
+        try {
+            stmt = conn.prepareStatement("UPDATE `card` SET `Username` = '" + newName + "'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            stmt.executeUpdate();
+        } finally {
+            Connectivity.close(stmt);
+        }
+    }
 }

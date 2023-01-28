@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logic.view.fxview.SceneController">
    <Button fx:id="dailyTask1" layoutX="50.0" layoutY="145.0" mnemonicParsing="false" onAction="#completeDailyTask1Try" prefHeight="50.0" prefWidth="500.0" style="-fx-border-color: black;" text="Refresh to see daily task" />
    <Button layoutY="700.0" mnemonicParsing="false" onAction="#switchToProfileScene" prefHeight="100.0" prefWidth="200.0" text="Profile">
       <font>
@@ -71,7 +71,7 @@
          <Bloom threshold="1.0" />
       </effect>
    </Label>
-   <Button fx:id="weeklyTask2" layoutX="50.0" layoutY="605.0" mnemonicParsing="false" onAction="#completeWeeklyTask1Try" prefHeight="50.0" prefWidth="500.0" style="-fx-border-color: black;" text="Refresh to see weekly task" />
+   <Button fx:id="weeklyTask2" layoutX="50.0" layoutY="605.0" mnemonicParsing="false" onAction="#completeWeeklyTask2Try" prefHeight="50.0" prefWidth="500.0" style="-fx-border-color: black;" text="Refresh to see weekly task" />
    <DialogPane fx:id="completeTaskDialogPane" layoutX="15.0" layoutY="80.0" prefHeight="500.0" prefWidth="570.0" style="-fx-background-color: blue;" visible="false">
       <content>
          <AnchorPane prefHeight="500.0" prefWidth="570.0">
@@ -91,7 +91,7 @@
                      <Font size="24.0" />
                   </font>
                </Button>
-               <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: gray; -fx-border-color: black;" text="Change task">
+               <Button mnemonicParsing="false" onAction="#changeTask" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: gray; -fx-border-color: black;" text="Change task">
                   <font>
                      <Font size="24.0" />
                   </font>
