@@ -352,24 +352,15 @@ public class SceneController {
             i = i + 1;
         }
     }
-    public void showTask(String index){
+    public void showTask(String index) {
         String message = "NESSUNA TASK PRESENTE, CHIEDI A MOTEEVE DI DARTENE UNA NUOVA!";
         String baseColor = "-fx-background-color: white";
-
-
         String color = "-fx-background-color: ";
+
         switch (index) {
 
             case "Task1":
-
-                if (tskList.get(0).getStatus()) {
-                    dailyTask1.setText(message);
-                    dailyTask1.setStyle(baseColor);
-
-                } else {
-                    dailyTask1.setText(tskList.get(0).getScript());
-                    dailyTask1.setStyle(color + tskList.get(0).getColor());
-                }
+                actionOnTask1();
                 break;
 
             case "Task2":
@@ -427,10 +418,42 @@ public class SceneController {
                 }
                 break;
 
-            default : break;
+            default:
+                break;
+        }
+    }
+
+        private void actionOnTask1(){
+            String message = "NESSUNA TASK PRESENTE, CHIEDI A MOTEEVE DI DARTENE UNA NUOVA!";
+            String baseColor = "-fx-background-color: white";
+            String color = "-fx-background-color: ";
+            if (tskList.get(0).getStatus()) {
+                dailyTask1.setText(message);
+                dailyTask1.setStyle(baseColor);
+
+            } else {
+                dailyTask1.setText(tskList.get(0).getScript());
+                dailyTask1.setStyle(color + tskList.get(0).getColor());
+            }
         }
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //-------------------------------------------------CHANGE USERNAME
     @FXML
     public void changeUsernameTry() {
@@ -569,7 +592,7 @@ public class SceneController {
     }
 
     @FXML
-    public void changeTask() throws NoChangeException {
+    public void changeTask() {
 
         ChangeTaskController controller = new ChangeTaskController();
 
@@ -630,7 +653,7 @@ public class SceneController {
     }
 
     @FXML
-    public void completeAchievementSuccess() throws Exception {
+    public void completeAchievementSuccess() {
 
         CompleteAchievementAchievementBean bean1 = new CompleteAchievementAchievementBean() ;
         bean1.setBean(achList.get(achIndex-1));
@@ -780,7 +803,8 @@ public class SceneController {
             case "Slot8":
                 slot8.setImage(stickerToAdd);
                 break;
-            default:
+
+            case "Remove all stickers":
                 slot1.setImage(null);
                 slot2.setImage(null);
                 slot3.setImage(null);
@@ -790,6 +814,7 @@ public class SceneController {
                 slot7.setImage(null);
                 slot8.setImage(null);
                 break;
+            default: break;
         }
         setAllDialogPanesInvisible();
     }
