@@ -787,6 +787,7 @@ public class SceneController {
                 slot6.setImage(null);
                 slot7.setImage(null);
                 slot8.setImage(null);
+                break;
             default :
                 System.out.println("Error");
                 break;
