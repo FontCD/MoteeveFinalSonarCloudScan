@@ -31,6 +31,8 @@ import logic.completetask.CompleteTaskTaskBean;
 import logic.completetask.CompleteTaskUserBean;
 import logic.exceptions.InvalidStringException;
 import logic.exceptions.NoChangeException;
+import logic.exceptions.NoSlotSelectedException;
+import logic.exceptions.NoStickerSelectedException;
 import logic.factory.BaseObject;
 import logic.model.Card;
 import logic.model.Sticker;
@@ -655,14 +657,12 @@ public class SceneController {
         setAllDialogPanesInvisible();
         selectStickerDialogPane.setVisible(true);
         availableStickersListView.getItems().clear();
-
-
         for(Sticker stk : stkList) {
                 if (stk.getStatus()) {
                     availableStickersListView.getItems().addAll(stk.getName());
                 }
-            }
         }
+    }
 
 
     @FXML
@@ -677,8 +677,8 @@ public class SceneController {
             int index = availableStickersListView.getSelectionModel().getSelectedIndex();
             finalUrl = stkList.get(index).getStickerUrl();
             selectSlotTry();
-        }catch(IndexOutOfBoundsException e){
-            noStickerSelectedDialogPane.setVisible(true);
+        }catch(NoStickerSelectedException e){
+            e.noStickerSelectedError();
         }
 
     }
@@ -709,8 +709,8 @@ public class SceneController {
             int index = slotsListView.getSelectionModel().getSelectedIndex();
             String mySlot = slotList.get(index);
             applicateStickerToSlot(mySlot, finalUrl);
-        }catch(IndexOutOfBoundsException e){
-            noSlotSelectedDialogPane.setVisible(true);
+        }catch(NoSlotSelectedException e){
+            e.noSlotSelectedError();
         }
     }
     @FXML
