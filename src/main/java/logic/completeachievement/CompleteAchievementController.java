@@ -5,12 +5,11 @@ import logic.dao.StickerDAOJDBC;
 import logic.factory.BaseObject;
 import logic.model.Sticker;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class CompleteAchievementController {
 
-    public void unlockAchievement(CompleteAchievementAchievementBean achBean, CompleteAchievementStickerListBean stickerListBean) throws Exception {
+    public void unlockAchievement(CompleteAchievementAchievementBean achBean, CompleteAchievementStickerListBean stickerListBean) {
 
         BaseObject ach = achBean.getBean() ;
 
@@ -30,7 +29,7 @@ public class CompleteAchievementController {
         }
     }
 
-    private void updateDB(int stkIndex, int achIndex) throws SQLException {
+    private void updateDB(int stkIndex, int achIndex) {
         StickerDAOJDBC stkDao = new StickerDAOJDBC();
         AchievementDAOJDBC achDao = new AchievementDAOJDBC();
 

@@ -4,13 +4,13 @@ import logic.factory.BaseObject;
 
 public class CompleteTaskTaskBean {
 
-    private BaseObject task;
+    private BaseObject completeTaskTask;
 
-    public void setBean(BaseObject newTask) {
-        this.task = newTask;
+    public void setBean(BaseObject completeTaskTask) {
+        this.completeTaskTask = completeTaskTask;
     }
 
     public BaseObject getBean() {
-        return task;
+        return completeTaskTask;
     }
 }

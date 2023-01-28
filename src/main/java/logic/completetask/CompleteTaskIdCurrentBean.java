@@ -2,13 +2,13 @@ package logic.completetask;
 
 public class CompleteTaskIdCurrentBean {
 
-    private int idCurrent;
+    private int completeTaskIdCurrent;
 
-    public void setBean(int idCurrent) {
-        this.idCurrent = idCurrent;
+    public void setBean(int completeTaskIdCurrent) {
+        this.completeTaskIdCurrent = completeTaskIdCurrent;
     }
 
     public int getBean(){
-        return this.idCurrent;
+        return this.completeTaskIdCurrent;
     }
 }

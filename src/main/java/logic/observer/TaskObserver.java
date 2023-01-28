@@ -1,6 +1,5 @@
 package logic.observer;
-import javafx.fxml.FXML;
-import logic.SceneController;
+
 import logic.factory.BaseObject;
 
 import javax.swing.*;

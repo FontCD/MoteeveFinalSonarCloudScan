@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ViewCardController {
 
-    public ViewCardUserBean createCard() throws Exception {
+    public ViewCardUserBean createCard(){
         CardDAOJDBC dao = new CardDAOJDBC();
         CardFactory factory = new CardFactory();
 

@@ -2,11 +2,9 @@ package logic.factory;
 
 import logic.observer.Subject;
 
-import java.util.List;
+
 
 public interface BaseObject extends Subject {
-
-    void setObject(int id, String name, String script, String color, boolean status, int reward);
 
     int getId() ;
 
@@ -14,14 +12,12 @@ public interface BaseObject extends Subject {
 
     String getScript() ;
 
-    String getColor() ;
-
     boolean getStatus() ;
+
+    String getColor();
 
     int getReward() ;
 
-    void setComplete() throws Exception ;
-    void setCompletable() ;
+    void setComplete();
 
-    void setBaseObjectById(int index) throws Exception;
 }

@@ -7,8 +7,7 @@ import java.util.List;
 
 public class CardFactory {
     public Card createUser(String userName, int exp, int lvl, int changes, String profileImage, List<Sticker> slots){
-        Card user = new Card(userName,exp,lvl,changes,profileImage,slots);
-        return user;
+        return new Card(userName,exp,lvl,changes,profileImage,slots);
     }
 
 }

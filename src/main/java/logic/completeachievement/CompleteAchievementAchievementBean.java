@@ -2,7 +2,6 @@ package logic.completeachievement;
 
 import logic.factory.BaseObject;
 
-
 public class CompleteAchievementAchievementBean {
 
         private BaseObject ach;
@@ -11,7 +10,7 @@ public class CompleteAchievementAchievementBean {
             this.ach = ach;
         }
 
-            public BaseObject getBean() {
+        public BaseObject getBean() {
             return this.ach;
         }
 

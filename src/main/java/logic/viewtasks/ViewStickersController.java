@@ -1,4 +1,4 @@
-package logic.viewstickers;
+package logic.viewtasks;
 
 
 import logic.dao.StickerDAOJDBC;
@@ -7,6 +7,7 @@ import logic.model.Sticker;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ViewStickersController {
 

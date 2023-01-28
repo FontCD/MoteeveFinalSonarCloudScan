@@ -1,19 +1,17 @@
 package logic.viewachievements;
 
 import logic.dao.AchievementDAOJDBC;
-import logic.dao.TaskDAOJDBC;
 import logic.factory.BaseObject;
 import logic.factory.ObjectFactory;
 import logic.observer.AchievementObserver;
-import logic.observer.TaskObserver;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewAchievementsController {
+public class ViewAchievementController {
 
-    public ViewAchievementsListBean createAchList() throws SQLException {
+    public ViewAchievementListBean createAchList() {
         int achInd = 1;
         int maxAch = 11;
         List<BaseObject> listAch = new ArrayList<>();
@@ -28,7 +26,6 @@ public class ViewAchievementsController {
             boolean status = dao.extractStatus(achInd);
             int reward = dao.extractReward(achInd);
 
-
             BaseObject ach = factory.createBaseObject(achInd, name, script, color, status, reward, "Ach");
             listAch.add(ach);
 
@@ -39,7 +36,7 @@ public class ViewAchievementsController {
 
         } while (achInd != maxAch + 1);
 
-        ViewAchievementsListBean bean = new ViewAchievementsListBean();
+        ViewAchievementListBean bean = new ViewAchievementListBean();
         bean.setBean(listAch);
 
         return bean;

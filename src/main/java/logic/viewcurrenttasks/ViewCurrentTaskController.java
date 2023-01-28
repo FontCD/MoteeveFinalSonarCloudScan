@@ -1,16 +1,17 @@
-package logic.viewtasks;
+package logic.viewcurrenttasks;
 
 import logic.dao.TaskDAOJDBC;
 import logic.factory.BaseObject;
 import logic.factory.ObjectFactory;
 import logic.observer.TaskObserver;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewTasksController {
+public class ViewCurrentTaskController {
 
-    public ViewTasksListBean createTskList() throws Exception {
+    public ViewCurrentTaskListBean createTskList() {
         int tskInd = 1;
         int maxTsk = 6;
         List<BaseObject> listTsk = new ArrayList<>();
@@ -36,7 +37,7 @@ public class ViewTasksController {
 
         } while (tskInd != maxTsk + 1);
 
-        ViewTasksListBean bean = new ViewTasksListBean();
+        ViewCurrentTaskListBean bean = new ViewCurrentTaskListBean();
         bean.setBean(listTsk);
 
         return bean;

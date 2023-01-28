@@ -1,6 +1,5 @@
 package logic.model;
 
-import logic.dao.StickerDAOJDBC;
 
 public class Sticker {																			//Entity
 
@@ -8,9 +7,6 @@ public class Sticker {																			//Entity
     private String name ;
     private String stickerurl;
     private boolean status ;
-
-    //da eliminare quando setstkbyid viene emessa nel dao
-    public Sticker(){};
 
     public Sticker (int id, String name, String stickerurl, boolean status) {
         this.id = id ;
@@ -35,20 +31,8 @@ public class Sticker {																			//Entity
         return  this.status;
     }
 
-    public void setOwned() throws Exception {
+    public void setOwned(){
         this.status = true;
     }
-
-    //da eliminare e mettere nel dao
-
-    public void setStickerById(int index) throws Exception {
-        StickerDAOJDBC dao = new StickerDAOJDBC() ;
-        this.id = index;
-        this.name = dao.extractName(index);
-        this.stickerurl = dao.extractStickerUrl(index);
-        this.status = dao.extractStatus(index);
-
-    }
-
 }
 

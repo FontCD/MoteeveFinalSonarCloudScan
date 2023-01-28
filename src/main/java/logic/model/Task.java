@@ -1,6 +1,5 @@
 package logic.model;
 
-import logic.dao.TaskDAOJDBC;
 import logic.factory.BaseObject;
 import logic.observer.Observer;
 import logic.observer.Subject;
@@ -28,15 +27,6 @@ public class Task implements BaseObject, Subject {
         this.status = status ;
         this.reward = reward ;
 
-    }
-    @Override
-    public void setObject(int id, String name, String script, String color,boolean status, int reward) {
-        this.id = id;
-        this.name = name ;
-        this.script = script ;
-        this.color = color ;
-        this.status = status ;
-        this.reward = reward ;
     }
 
     @Override
@@ -72,36 +62,11 @@ public class Task implements BaseObject, Subject {
     @Override
     public void setComplete() {
         this.status = true;
-
         notifyObservers();
     }
 
-    @Override
-    public void setCompletable() {
-        this.status = true;
-    }
 
     //da eliminare (nessun effetto collatelare)
-    @Override
-    public void setBaseObjectById(int index) throws Exception {
-        TaskDAOJDBC dao = new TaskDAOJDBC() ;
-
-        this.id = dao.extractIdCurrent(index) ;
-        if (this.id != 9999){
-            this.name = dao.extractNameCurrent(index);
-            this.script = dao.extractScriptCurrent(index);
-            this.color = dao.extractColorCurrent(index);
-            this.status = dao.extractStatusCurrent(index);
-            this.reward = dao.extractRewardCurrent(index);
-        } else {
-            this.name = null;
-            this.script = null;
-            this.color = null;
-            this.status = false;
-            this.reward = 0;
-        }
-
-    }
 
 
     @Override

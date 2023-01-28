@@ -6,14 +6,14 @@ import java.util.List;
 
 public class CompleteAchievementStickerListBean {
 
-    private List<Sticker> stickerList;
+    private List<Sticker> completeAchievementStickerList;
 
-    public void setBean(List<Sticker> stickerList) {
-        this.stickerList = stickerList;
+    public void setBean(List<Sticker> completeAchievementStickerList) {
+        this.completeAchievementStickerList = completeAchievementStickerList;
     }
 
     public List<Sticker> getBean(){
-        return this.stickerList;
+        return this.completeAchievementStickerList;
     }
 
 

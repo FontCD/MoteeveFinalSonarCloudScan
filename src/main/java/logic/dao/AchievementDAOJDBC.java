@@ -1,116 +1,128 @@
 package logic.dao;
 
 import logic.Connectivity;
-import logic.factory.BaseObject;
-import logic.factory.ObjectFactory;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class AchievementDAOJDBC {
     private final Connection conn = Connectivity.getConn(); 																																	//dalla classe connectivity prendo la connessione
     PreparedStatement stmt = null;
 
-    public String extractName(int index) throws SQLException {
-        String name;
+    public String extractName(int index) {
+        String achName = "";
         try {
             String forQuery = String.valueOf(index);
             stmt = conn.prepareStatement("SELECT Name FROM Achievement WHERE idAchievement =" + forQuery, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);    //creo uno statement che porta un result set
             ResultSet rs = stmt.executeQuery();                                                                                                                            //eseguo la query
 
             rs.first();
-            name = rs.getString("Name");
+            achName = rs.getString("Name");
             rs.close();
+        }catch (SQLException e){
+            e.printStackTrace();
         }finally {
             Connectivity.close(stmt);                                                                                                                                        //dalla classe connectivity chiudo lo statement
         }
-        return name;
+        return achName;
     }
 
-    public String extractScript(int index) throws SQLException {
-        String script;
+    public String extractScript(int index)  {
+        String achScript = "";
         try {
             String forQuery = String.valueOf(index);
             stmt = conn.prepareStatement("SELECT Script FROM Achievement WHERE idAchievement =" + forQuery, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);    //creo uno statement che porta un result set
             ResultSet rs = stmt.executeQuery();                                                                                                                            //eseguo la query
 
             rs.first();
-            script = rs.getString("Script");
+            achScript = rs.getString("Script");
             rs.close();
+        } catch (SQLException e)  {
+            e.printStackTrace();
         }finally {
             Connectivity.close(stmt);                                                                                                                                        //dalla classe connectivity chiudo lo statement
         }
-        return script;
+        return achScript;
     }
 
-    public String extractColor(int index) throws SQLException {
-        String color;
+    public String extractColor(int index)  {
+        String achColor = "";
         try {
             String forQuery = String.valueOf(index);
             stmt = conn.prepareStatement("SELECT Color FROM Achievement WHERE idAchievement =" + forQuery, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);    //creo uno statement che porta un result set
             ResultSet rs = stmt.executeQuery();                                                                                                                            //eseguo la query
 
             rs.first();
-            color = rs.getString("Color");
-            rs.close();
+            achColor = rs.getString("Color");
+            rs.close();             //eseguo la query
+        } catch (SQLException e)  {
+            e.printStackTrace();
         }finally {
             Connectivity.close(stmt);                                                                                                                                        //dalla classe connectivity chiudo lo statement
         }
-        return color;
+        return achColor;
     }
 
-    public boolean extractStatus(int index) throws SQLException {
-        boolean status;
+    public boolean extractStatus(int index) {
+        boolean achStatus = false;
         try {
             String forQuery = String.valueOf(index);
             stmt = conn.prepareStatement("SELECT Status FROM Achievement WHERE idAchievement =" + forQuery, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);    //creo uno statement che porta un result set
             ResultSet rs = stmt.executeQuery();                                                                                                                            //eseguo la query
 
             rs.first();
-            status = rs.getBoolean("Status");
+            achStatus = rs.getBoolean("Status");
             rs.close();
+        } catch (SQLException e)  {
+            e.printStackTrace();
         }finally {
             Connectivity.close(stmt);                                                                                                                                        //dalla classe connectivity chiudo lo statement
         }
-        return status;
+        return achStatus;
     }
 
-    public int extractReward(int index) throws SQLException {
-        int reward;
+    public int extractReward(int index) {
+        int achReward = 0;
         try {
             String forQuery = String.valueOf(index);
             stmt = conn.prepareStatement("SELECT Reward FROM Achievement WHERE idAchievement =" + forQuery, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);    //creo uno statement che porta un result set
             ResultSet rs = stmt.executeQuery();                                                                                                                            //eseguo la query
 
             rs.first();
-            reward = rs.getInt("Reward");
+            achReward = rs.getInt("Reward");
             rs.close();
+        } catch (SQLException e)  {
+            e.printStackTrace();
         }finally {
             Connectivity.close(stmt);                                                                                                                                        //dalla classe connectivity chiudo lo statement
         }
-        return reward;
+        return achReward;
     }
 
 
-    public void setCompletable(int index) throws Exception {
+    public void setCompletable(int index)  {
         try {
             String forQuery = String.valueOf(index);
             stmt = conn.prepareStatement("UPDATE Achievement SET Status = 1 WHERE idAchievement =" + forQuery, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);        //creo lo statement di update, il set a 1 identifica completato
             stmt.executeUpdate();
+        } catch (SQLException e)  {
+            e.printStackTrace();
         } finally {
             Connectivity.close(stmt);
         }
     }
 
-    public void setComplete(int index) throws SQLException {
+    public void setComplete(int index) {
         try {
             String forQuery = String.valueOf(index);
             stmt = conn.prepareStatement("UPDATE Achievement SET script = 'Completato' WHERE idAchievement =" + forQuery, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);        //creo lo statement di update, il set a 1 identifica completato
             stmt.executeUpdate();
+        } catch (SQLException e)  {
+            e.printStackTrace();
         } finally {
             Connectivity.close(stmt);
         }

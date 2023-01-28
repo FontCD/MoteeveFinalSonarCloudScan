@@ -5,6 +5,8 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import logic.view.SceneController;
+
 import java.util.Objects;
 
 public class Main extends Application {

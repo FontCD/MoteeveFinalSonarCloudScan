@@ -1,4 +1,4 @@
-package logic;
+package logic.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -12,26 +12,28 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
+import logic.asktomoteeve.AskToMoteeveBooleanBean;
+import logic.asktomoteeve.AskToMoteeveController;
+import logic.asktomoteeve.AskToMoteeveMotPhrBean;
 import logic.completeachievement.CompleteAchievementAchievementBean;
 import logic.completeachievement.CompleteAchievementController;
 import logic.completeachievement.CompleteAchievementStickerListBean;
 import logic.completetask.CompleteTaskController;
 import logic.completetask.CompleteTaskIdCurrentBean;
 import logic.completetask.CompleteTaskTaskBean;
-import logic.completetask.CompleteTaskCardBean;
+import logic.completetask.CompleteTaskUserBean;
+import logic.exceptions.InvalidStringException;
 import logic.factory.BaseObject;
-import logic.model.Sticker;
 import logic.model.Card;
-
-import logic.viewachievements.ViewAchievementsController;
-import logic.viewachievements.ViewAchievementsListBean;
+import logic.model.Sticker;
+import logic.viewachievements.ViewAchievementController;
+import logic.viewachievements.ViewAchievementListBean;
+import logic.viewcurrenttasks.ViewCurrentTaskController;
+import logic.viewcurrenttasks.ViewCurrentTaskListBean;
+import logic.viewstickers.ViewStickerListBean;
+import logic.viewstickers.ViewStickersController;
 import logic.viewcard.ViewCardController;
 import logic.viewcard.ViewCardUserBean;
-import logic.viewstickers.ViewStickersController;
-import logic.viewstickers.ViewStickersListBean;
-import logic.viewtasks.ViewTasksController;
-import logic.viewtasks.ViewTasksListBean;
-
 
 import java.io.File;
 import java.io.IOException;
@@ -71,6 +73,8 @@ public class SceneController {
     //setText,setColo,setStyle,completeAchiementTry
 
     //-----------------------------------------LABELS
+    @FXML
+    private Label askToMoteeveLabel;
     @FXML
     private Label taskNotificationObserverLabel;
 
@@ -146,7 +150,7 @@ public class SceneController {
 
     //---------------------------------------DIALOG PANES
     @FXML
-    private DialogPane actorSelectionDialogPane;
+    public static DialogPane actorSelectionDialogPane;
     @FXML
     public static DialogPane taskNotificationObserverDialogPane;
     @FXML
@@ -189,29 +193,28 @@ public class SceneController {
     private DialogPane noSlotSelected;
 
     //------------------------------------------------------STARTING SETUP
-    public static void setUp() throws Exception {
+    public static void setUp() {
         setAchievementLIst();
         setTaskList();
         setStickerList();
         setCard();
     }
-    private static void setAchievementLIst() throws Exception {
-        ViewAchievementsController controller = new ViewAchievementsController();
-        ViewAchievementsListBean bean = controller.createAchList();
+    private static void setAchievementLIst()  {
+        ViewAchievementController controller = new ViewAchievementController();
+        ViewAchievementListBean bean = controller.createAchList();
         achList = bean.getBean();
     }
-    private static void setTaskList() throws Exception {
-        ViewTasksController controller = new ViewTasksController();
-        ViewTasksListBean bean = controller.createTskList();
+    private static void setTaskList() {
+        ViewCurrentTaskController controller = new ViewCurrentTaskController();
+        ViewCurrentTaskListBean bean = controller.createTskList();
         tskList = bean.getBean();
     }
-
-    private static void setStickerList() throws Exception {
+    private static void setStickerList()  {
         ViewStickersController controller = new ViewStickersController();
-        ViewStickersListBean bean = controller.createStkList();
+        ViewStickerListBean bean = controller.createStkList();
         stkList = bean.getBean();
     }
-    private static void setCard() throws Exception {
+    private static void setCard()  {
            ViewCardController controller = new ViewCardController();
            ViewCardUserBean bean = controller.createCard();
            card = bean.getBean();
@@ -252,7 +255,7 @@ public class SceneController {
     }
 
     @FXML
-    public void switchToAchievementScene(ActionEvent event) throws IOException, InterruptedException {
+    public void switchToAchievementScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("achievementScene.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -412,6 +415,23 @@ public class SceneController {
     public void askMoteeveTry() {
         setAllDialogPanesInvisible();
         askMoteeveDialogPane.setVisible(true);
+        AskToMoteeveController controller = new AskToMoteeveController();
+        AskToMoteeveBooleanBean bean = controller.checkForAPhrase();
+        if (!bean.getBean()){
+            askToMoteeveLabel.setText("Moteeve sta pensando ad una frase per te!");
+            controller.askMotivationalPhrase();
+        } else{
+            try{
+                AskToMoteeveMotPhrBean bean2 = controller.takeMotivationalPhrase();
+                if (bean2.getBean() == null){
+                    throw new InvalidStringException();
+                }
+                askToMoteeveLabel.setText(bean2.getBean());
+            }catch (InvalidStringException e){
+                e.invalidStringMessage();
+                askToMoteeveLabel.setText("=(");
+            }
+        }
     }
 
     @FXML
@@ -497,14 +517,14 @@ public class SceneController {
     }
 
     @FXML
-    public void completeTaskSuccess() throws Exception {
+    public void completeTaskSuccess() {
             CompleteTaskController controller = new CompleteTaskController();
 
 
             CompleteTaskTaskBean taskBean = new CompleteTaskTaskBean() ;
             taskBean.setBean(tskList.get(tskIndex-1));
 
-            CompleteTaskCardBean userBean = new CompleteTaskCardBean();
+            CompleteTaskUserBean userBean = new CompleteTaskUserBean();
             userBean.setBean(card);
 
             CompleteTaskIdCurrentBean idCurrentBean = new CompleteTaskIdCurrentBean();
@@ -707,16 +727,5 @@ public class SceneController {
                 break;
         }
         setAllDialogPanesInvisible();
-    }
-//---------------POP UPS-------------
-    @FXML
-    public void taskObserverNotificationClose(){
-    }
-    @FXML
-    public void achObserverNotificationClose(){
-    }
-    private void taskObserverNotificationOpen() {
-        taskNotificationObserverDialogPane.setVisible(true);
-        taskNotificationObserverLabel.setText("ciao");
     }
 }

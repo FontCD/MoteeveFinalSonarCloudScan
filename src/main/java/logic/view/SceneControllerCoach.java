@@ -1,7 +1,9 @@
-package logic;
+package logic.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import javax.swing.*;
 
 public class SceneControllerCoach {
 
@@ -23,7 +25,7 @@ public class SceneControllerCoach {
     @FXML
     public void submitTaskId() {
         String newId = newTaskTextField.getText();
-        System.out.println("La task con id " + newId + " è stata mandata ad un utente");
+        JOptionPane.showMessageDialog(null,"La Task con id " + newId + " è stata inviata al tuo apprendista","TASK INVIATA CON SUCCESSO", JOptionPane.INFORMATION_MESSAGE);
         newTaskTextField.setText("");
 
     }
@@ -31,7 +33,7 @@ public class SceneControllerCoach {
     @FXML
     public void submitMotPhrase() {
         String newMotPhrase = motPhraseTextField.getText();
-        System.out.println("La frase : " + newMotPhrase + " was sent to the user");
+        JOptionPane.showMessageDialog(null,"La frase che hai scritto è stata inviata al tuo apprendista","FRASE MOTIVAZIONALE INVIATA CON SUCCESSO", JOptionPane.INFORMATION_MESSAGE);
         motPhraseTextField.setText("");
     }
 
