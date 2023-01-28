@@ -26,11 +26,6 @@ public class SceneControllerCoach {
     //----------------------------------METHODS
 
     @FXML
-    public void refresh() {
-        System.out.println("Refresh");
-    }
-
-    @FXML
     public void submitTaskId() {
         ChangeTaskController controller = new ChangeTaskController();
         ChangeTaskBooleanBean booleanBean = controller.checkForATaskRequest();

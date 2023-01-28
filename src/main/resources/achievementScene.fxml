@@ -112,29 +112,4 @@
          </AnchorPane>
       </content>
    </DialogPane>
-   <DialogPane fx:id="achNotificationObserverDialogPane" layoutX="30.0" layoutY="80.0" prefHeight="529.0" prefWidth="540.0" style="-fx-background-color: blue;" visible="false">
-      <header>
-         <Label alignment="CENTER" style="-fx-background-color: white;" text="Achievement completed!">
-            <font>
-               <Font size="24.0" />
-            </font>
-         </Label>
-      </header>
-      <content>
-         <AnchorPane prefHeight="200.0" prefWidth="200.0">
-            <children>
-               <Label fx:id="achNotificationObserverLabel" layoutX="70.0" layoutY="100.0" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: black;" text="Text modified by the observer" wrapText="true">
-                  <font>
-                     <Font size="24.0" />
-                  </font>
-               </Label>
-               <Button layoutX="170.0" layoutY="400.0" mnemonicParsing="false" onAction="#achObserverNotificationClose" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green; -fx-border-color: black;" text="Ok">
-                  <font>
-                     <Font size="24.0" />
-                  </font>
-               </Button>
-            </children>
-         </AnchorPane>
-      </content>
-   </DialogPane>
 </AnchorPane>

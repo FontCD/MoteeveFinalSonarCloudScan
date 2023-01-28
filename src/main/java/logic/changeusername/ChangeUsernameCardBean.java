@@ -3,14 +3,14 @@ package logic.changeusername;
 import logic.model.Card;
 
 public class ChangeUsernameCardBean {
-    private Card ChangeUsernameCard;
+    private Card changeUsernameCard;
 
     public void setBean(Card card){
-        this.ChangeUsernameCard = card;
+        this.changeUsernameCard = card;
     }
 
     public Card getBean(){
-        return this.ChangeUsernameCard;
+        return this.changeUsernameCard;
     }
 
 }
