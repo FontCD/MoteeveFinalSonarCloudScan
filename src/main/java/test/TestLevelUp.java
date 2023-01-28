@@ -1,7 +1,6 @@
 package test;
 
 import logic.Connectivity;
-import logic.dao.CardDAOJDBC;
 import logic.model.Card;
 import logic.viewcard.ViewCardController;
 import logic.viewcard.ViewCardUserBean;
