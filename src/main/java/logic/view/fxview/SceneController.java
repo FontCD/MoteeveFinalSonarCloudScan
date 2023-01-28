@@ -138,7 +138,7 @@ public class SceneController {
     @FXML
     private ImageView slot8;
     @FXML
-    private final List<ImageView> slotImage = new ArrayList<>() {{add(slot1); add(slot2); add(slot3); add(slot4); add(slot4); add(slot5); add(slot6); add(slot7); add(slot8); }};
+    private final List<ImageView> slotImage = new ArrayList<>();
     //---------------------------------------LIST VIEWS
     @FXML
     private ListView<String> availableStickersListView;
@@ -146,8 +146,7 @@ public class SceneController {
     @FXML
     private ListView<String> slotsListView;
 
-    private List<String> slotList = new ArrayList<>(){{add("Slot1"); add("Slot2"); add("Slot3"); add("Slot4"); add("Slot5"); add("Slot6"); add("Slot7"); add("Slot8"); add("Remove all stickers");}};
-
+    private List<String> slotList = new ArrayList<>();
     private String currentSlots;
     private String finalUrl;
 
@@ -209,6 +208,29 @@ public class SceneController {
         setTaskList();
         setStickerList();
         setCard();
+    }
+
+    public void setUpSlotList() {
+        slotList.add("Slot1");
+        slotList.add("Slot2");
+        slotList.add("Slot3");
+        slotList.add("Slot4");
+        slotList.add("Slot5");
+        slotList.add("Slot6");
+        slotList.add("Slot7");
+        slotList.add("Slot8");
+        slotList.add("Remove all stickers");
+    }
+
+    public void setUpSlotImage() {
+        slotImage.add(slot1);
+        slotImage.add(slot2);
+        slotImage.add(slot3);
+        slotImage.add(slot4);
+        slotImage.add(slot5);
+        slotImage.add(slot6);
+        slotImage.add(slot7);
+        slotImage.add(slot8);
     }
     private static void setAchievementLIst()  {
         ViewAchievementController controller = new ViewAchievementController();
@@ -276,6 +298,10 @@ public class SceneController {
 
     @FXML
     public void putOffStartingMessage(){
+
+        setUpSlotList();
+        setUpSlotImage();
+
         usernameLabel.setText(card.getUserName());
         experienceLabel.setText(String.valueOf(card.getExp()));
         levelLabel.setText(String.valueOf(card.getLevel()));
@@ -660,14 +686,12 @@ public class SceneController {
         setAllDialogPanesInvisible();
         selectStickerDialogPane.setVisible(true);
         availableStickersListView.getItems().clear();
-
-
         for(Sticker stk : stkList) {
                 if (stk.getStatus()) {
                     availableStickersListView.getItems().addAll(stk.getName());
                 }
-            }
         }
+    }
 
 
     @FXML
