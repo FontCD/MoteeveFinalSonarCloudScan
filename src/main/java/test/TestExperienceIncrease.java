@@ -27,7 +27,7 @@ public class TestExperienceIncrease {
         myCard.addReward(100);
         myDAO.addExp(100);
 
-        assertEquals(currentExp + 100, myDAO.extractExp());
+        assertEquals((long)currentExp + 100, myDAO.extractExp());
     }
 
 }

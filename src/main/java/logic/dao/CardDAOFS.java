@@ -24,7 +24,7 @@ public class CardDAOFS {
             reader.close();
 
         } catch (IOException e) {
-            System.err.println("ERROR IN FILE SYSTEM PERSISTENCE");
+            e.printStackTrace();
         }
 
         //RITORNA LO USERNAME RECUPERATO
@@ -40,7 +40,7 @@ public class CardDAOFS {
             writer.write(newName);
             writer.close();
         } catch (IOException e) {
-            System.err.println("ERROR IN FILE SYSTEM PERSISTENCE");
+            e.printStackTrace();
         }
 
     }

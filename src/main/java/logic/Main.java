@@ -13,12 +13,12 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class Main extends Application {
-    public static String view = "FX";
+    public static final String VIEW = "FX";
     public static void main(String[] args) throws SQLException, IOException {
-        if(view.equals("CLI")){
+        if(VIEW.equals("CLI")){
             CLIChoose cli = new CLIChoose();
             cli.firstPage();
-        } else if (view.equals("FX")){
+        } else if (VIEW.equals("FX")){
             launch(args);
         }
     }

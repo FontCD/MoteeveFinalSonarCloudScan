@@ -16,9 +16,9 @@ public class TaskObserver implements Observer {
     //METODI OBSERVER
     @Override
     public void update() {
-        if(Main.view.equals("CLI")){
+        if(Main.VIEW.equals("CLI")){
             System.out.println("\n\n//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\nMESSAGE:\nCompliementi hai completato un la Task " + this.tsk.getName() + ", ora la tua esperienza è aumentata di " + this.tsk.getReward() + "\n//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
-        } else if(Main.view.equals("FX")){
+        } else if(Main.VIEW.equals("FX")){
             JOptionPane.showMessageDialog(null,"Complimenti hai completato la Task: " + tsk.getName() + "\n\nControlla nel profilo e vedrai che la tua esperienza è aumentata di " + tsk.getReward() + "!" ,"MESSAGGIO DA MOTEEVE",JOptionPane.INFORMATION_MESSAGE);
         }
     }
