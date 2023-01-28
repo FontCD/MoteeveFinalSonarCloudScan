@@ -19,6 +19,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class TestCompleteAchievement {
+
+    //Questo test è stato sviluppato da Lorenzo Brunori
+    //Il test verifica che il controller del caso d'uso complete achievement effettivamente completi la task
     @Test
     public void testCompleteAchievement() throws SQLException, IOException {
         Connectivity.setConnection();
