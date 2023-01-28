@@ -9,7 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class Connectivity {																	//classe che gestisce la connettività dell'applicazione al database
+//CLASSE CHE GESTISCE TUTTE LE INFORMAZIONI RELATIVE ALLA COMUNICAZIONE DEL SISTEMA COL DATABASE
+public class Connectivity {
     //parametri di connessione
     private static String user = null;
     private static String pass = null;
@@ -20,7 +21,7 @@ public class Connectivity {																	//classe che gestisce la connettivit
 
     public static void setConnection() throws IOException, SQLException {
 
-            InputStream input = new FileInputStream("C://Users//bruno//IdeaProjects//Test2//src//main//resources//properties.properties");
+            InputStream input = new FileInputStream("C:/Users/fonte/IdeaProjects/MoteeveFinalVersion/src/main/resources/properties.properties");
             Properties prop = new Properties();
             prop.load(input);
 

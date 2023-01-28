@@ -36,6 +36,9 @@ public class Card {
     public int getLevel() {
         return this.level;
     }
+    public void setLevel(int newLevel) {
+        this.level = newLevel;
+    }
     public List<Sticker> getSlots() {return this.slots;}
 
     public String getProfileImage() {
