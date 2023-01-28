@@ -3,8 +3,6 @@ package logic.viewtasks;
 import logic.dao.TaskDAOJDBC;
 import logic.factory.BaseObject;
 import logic.factory.ObjectFactory;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

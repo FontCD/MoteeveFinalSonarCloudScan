@@ -4,8 +4,6 @@ import logic.dao.AchievementDAOJDBC;
 import logic.factory.BaseObject;
 import logic.factory.ObjectFactory;
 import logic.observer.AchievementObserver;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

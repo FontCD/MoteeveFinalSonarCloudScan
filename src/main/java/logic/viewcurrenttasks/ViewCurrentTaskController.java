@@ -4,8 +4,6 @@ import logic.dao.TaskDAOJDBC;
 import logic.factory.BaseObject;
 import logic.factory.ObjectFactory;
 import logic.observer.TaskObserver;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 

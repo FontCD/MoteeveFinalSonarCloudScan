@@ -65,6 +65,7 @@ public class SceneController {
     private static List<Sticker> stkList;
 
     private static Card card;
+    public String color = "-fx-background-color: ";
 
 
     //-----------------------------------------BUTTONS
@@ -160,19 +161,13 @@ public class SceneController {
 
     //---------------------------------------DIALOG PANES
     @FXML
-    public static DialogPane actorSelectionDialogPane;
-    @FXML
-    public static DialogPane taskNotificationObserverDialogPane;
-    @FXML
-    public static DialogPane achNotificationObserverDialogPane;
+    private DialogPane actorSelectionDialogPane;
     @FXML
     private DialogPane noSlotSelectedDialogPane ;
-
     @FXML
     private DialogPane startingMessageDialogPane;
     @FXML
     private DialogPane logoutDialogPane;
-
     @FXML
     private DialogPane askMoteeveDialogPane;
 
@@ -307,13 +302,13 @@ public class SceneController {
         levelLabel.setText(String.valueOf(card.getLevel()));
 
        int i = 1 ;
-        for (Sticker stk: card.getSlots()) {
-                if(stk.getName().equals("Vuoto")) {
-            }else{
-                applicateStickerToSlot("Slot" + i,stk.getStickerUrl());
-            }
-                i= i+1;
-        }
+       for (Sticker stk: card.getSlots()) {
+
+           if (!stk.getName().equals("Vuoto")) {
+               applicateStickerToSlot("Slot" + i,stk.getStickerUrl());
+           }
+           i++;
+       }
 
         Circle clip = new Circle(profilePic.getFitWidth());
         clip.setRadius(50.0);
@@ -373,8 +368,9 @@ public class SceneController {
 
                 } else {
                     dailyTask1.setText(tskList.get(0).getScript());
-                    dailyTask1.setStyle("-fx-background-color: " + tskList.get(0).getColor());
+                    dailyTask1.setStyle(color + tskList.get(0).getColor());
                 }
+                break;
 
             case "Task2":
 
@@ -383,8 +379,9 @@ public class SceneController {
                     dailyTask2.setStyle(baseColor);
                 } else {
                     dailyTask2.setText(tskList.get(1).getScript());
-                    dailyTask2.setStyle("-fx-background-color: " + tskList.get(1).getColor());
+                    dailyTask2.setStyle(color + tskList.get(1).getColor());
                 }
+                break;
 
             case "Task3":
 
@@ -393,8 +390,9 @@ public class SceneController {
                     dailyTask3.setStyle(baseColor);
                 } else {
                     dailyTask3.setText(tskList.get(2).getScript());
-                    dailyTask3.setStyle("-fx-background-color: " + tskList.get(2).getColor());
+                    dailyTask3.setStyle(color + tskList.get(2).getColor());
                 }
+                break;
 
             case "Task4":
 
@@ -403,8 +401,9 @@ public class SceneController {
                     dailyTask4.setStyle(baseColor);
                 } else {
                     dailyTask4.setText(tskList.get(3).getScript());
-                    dailyTask4.setStyle("-fx-background-color: " + tskList.get(3).getColor());
+                    dailyTask4.setStyle(color + tskList.get(3).getColor());
                 }
+                break;
 
             case "Task5":
 
@@ -413,8 +412,9 @@ public class SceneController {
                     weeklyTask1.setStyle(baseColor);
                 } else {
                     weeklyTask1.setText(tskList.get(4).getScript());
-                    weeklyTask1.setStyle("-fx-background-color: " + tskList.get(4).getColor());
+                    weeklyTask1.setStyle(color + tskList.get(4).getColor());
                 }
+                break;
 
             case "Task6":
 
@@ -423,8 +423,11 @@ public class SceneController {
                     weeklyTask2.setStyle(baseColor);
                 } else {
                     weeklyTask2.setText(tskList.get(5).getScript());
-                    weeklyTask2.setStyle("-fx-background-color: " + tskList.get(5).getColor());
+                    weeklyTask2.setStyle(color + tskList.get(5).getColor());
                 }
+                break;
+
+            default : break;
         }
 
     }
