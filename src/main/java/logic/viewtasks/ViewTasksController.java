@@ -15,7 +15,6 @@ public class ViewTasksController {
         ObjectFactory factory = new ObjectFactory();
 
         //------------DAILY---------------
-
         int dailyTskInd = 1;
         int maxDailyTsk = 6;
 

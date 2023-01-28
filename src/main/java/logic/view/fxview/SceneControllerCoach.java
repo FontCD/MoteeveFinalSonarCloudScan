@@ -38,12 +38,17 @@ public class SceneControllerCoach {
         if(booleanBean.getBean()){
 
             String newId = newTaskTextField.getText();
+
             try {
                 Integer.parseInt(newId);
             }catch (NumberFormatException e){
                 newTaskTextField.setText("");
             }
+
+            int toChange = Integer.parseInt(newId);
+
             ChangeTaskIdBean retBean = new ChangeTaskIdBean();
+            retBean.setBean(toChange);
             controller.changeTask(retBean);
 
             JOptionPane.showMessageDialog(null,"La Task con id " + newId + " è stata inviata al tuo apprendista","TASK INVIATA CON SUCCESSO", JOptionPane.INFORMATION_MESSAGE);

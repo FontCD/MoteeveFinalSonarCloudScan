@@ -254,6 +254,10 @@ public class TaskDAOJDBC {
 
 
     public void insertNewTask(int taskId,int index, String type){
+
+        System.out.println(taskId);
+
+
         try{
             String forQueryTask = String.valueOf(taskId) ;
             String forQueryId = String.valueOf(index) ;
