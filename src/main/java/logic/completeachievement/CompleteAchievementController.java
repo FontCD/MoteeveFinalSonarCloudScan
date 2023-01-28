@@ -14,18 +14,15 @@ public class CompleteAchievementController {
         BaseObject ach = achBean.getBean() ;
 
 
-        if (ach.getStatus()){
+        if (ach.getStatus()) {
 
             List<Sticker> list = stickerListBean.getBean();
 
-            ach.setComplete() ;
+            ach.setComplete();
             int stkIndex = ach.getReward();
-            list.get(stkIndex-1).setOwned();
+            list.get(stkIndex - 1).setOwned();
 
-            updateDB(stkIndex,ach.getId());
-
-        } else {
-            System.out.println("Non puoi ancora completare questo achievement");
+            updateDB(stkIndex, ach.getId());
         }
     }
 
