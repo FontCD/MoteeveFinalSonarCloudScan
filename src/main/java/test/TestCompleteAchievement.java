@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class TestCompleteAchievement {
@@ -36,7 +37,6 @@ public class TestCompleteAchievement {
         listBeanForTest.setBean(listBean.getBean());
 
         controller.unlockAchievement(bean,listBeanForTest);
-        boolean testResult = ach.getScript().equals("Completato");
-        assertTrue(testResult);
+        assertEquals("Completato", ach.getScript());
     }
 }
