@@ -12,6 +12,7 @@ public class AskToMoteeveController {
     public void askMotivationalPhrase()  {
         CoachDAOJDBC dao = new CoachDAOJDBC();
         dao.sendMotPhrRequest();
+        int a;
     }
 
     //METODO PER PRELEVARE UNA FRASE MOTIVAZIONALE
